@@ -1,0 +1,95 @@
+---
+title: "Counting Tweets"
+subtitle: "Oxford Spring School, 2022"
+author: Christopher Barrie
+format: revealjs
+editor: visual
+---
+
+## Introduction
+
+-   Why count tweets?
+    -   Test your API call
+
+    -   Of substantive interest
+
+        -   But... design considerations (normalizing)
+
+## Counting tweets
+
+```{r, eval = T, echo = F}
+library(academictwitteR)
+library(dplyr)
+library(lubridate)
+library(ggplot2)
+```
+
+```{r, eval = F, echo = T}
+#| code-line-numbers: "|6|7|8|9|10|11"
+
+library(academictwitteR)
+library(dplyr)
+library(lubridate)
+library(ggplot2)
+
+tweetcounts <- count_all_tweets(
+  query = "Hogmanay",
+  start_tweets = "2019-12-27T00:00:00Z",
+  end_tweets = "2020-01-05T00:00:00Z",
+  bearer_token = get_bearer(),
+  granularity = "hour",
+  n = 500
+)
+```
+
+## Format date
+
+```{r, eval = F, echo = T}
+
+tweetcounts$time <-
+  parse_date_time(tweetcounts$start, 
+                  orders = "ymd HMS")
+```
+
+## 
+
+```{r, echo = F, eval = T}
+tweetcounts <- readRDS("data/hogmanay.rds")
+```
+
+::: panel-tabset
+### Tab A
+
+```{r, echo = F, eval = T}
+tweetcounts <- readRDS("data/hogmanay.rds")
+```
+```{r, echo = T, eval = T}
+head(tweetcounts)
+```
+
+
+### Tab B
+
+```{r, eval = T, echo = T}
+tweetcounts %>% ggplot() +
+  geom_line(aes(time, tweet_count))
+```
+:::
+
+## Adding arguments
+
+```{r, eval = F, echo = T}
+#| code-line-numbers: "|3|4|5"
+
+tweetcounts <- count_all_tweets(
+  query = "Hogmanay",
+  place = "Edinburgh",
+  is_retweet = F,
+  has_images = T,
+  start_tweets = "2019-12-27T00:00:00Z",
+  end_tweets = "2020-01-05T00:00:00Z",
+  bearer_token = get_bearer(),
+  granularity = "hour",
+  n = 500
+)
+```

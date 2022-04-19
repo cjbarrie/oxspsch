@@ -1,0 +1,190 @@
+---
+title: "Analyzing Twitter Data"
+subtitle: "Oxford Spring School, 2022"
+author: Christopher Barrie
+format: revealjs
+editor: visual
+---
+
+## Introduction
+
+### Day 1
+
+-   General intro.
+-   `Authorization and connecting to the API`
+-   `Understanding the payload`
+-   `Making requests`
+-   `Accessing data outside the API`
+
+## Introduction
+
+### Day 2
+
+-   Twitter as data in social science
+    -   Twitter as barometer of public opinion
+
+    -   Twitter as experimental platform
+
+    -   Twitter to derive individual-level attributes
+-   `Replication tasks`
+-   `Understanding the payload`
+-   `Making requests`
+
+## Introduction
+
+### Day 3
+
+-   Group projects
+    -   1.5 hrs prep.
+
+    -   1.5 hrs pres.
+
+        -   Research question
+
+        -   Data you targeted
+
+        -   Empirical strategy (e.g., experimental, observational, inferential)
+
+        -   Findings
+
+## Analyzing Twitter data
+
+Why?
+
+1.  Important site of political communication
+2.  Important site of social interaction
+3.  It's very accessible
+
+Especially, since intro. of **Academic Research Product Track**...
+
+## Twitter Academic API
+
+-   10m tweets monthly
+-   Full historical archive
+-   Authorization requires...
+
+## Authorization
+
+Go [here](https://developer.twitter.com/en/products/twitter-api/academic-research)
+
+1.  Do you have an academic profile?
+2.  Can you describe your research?
+    -   Will you share with government entity?
+    -   Is the research non-commercial?
+    -   Is it conducted at individual level?
+    -   Will you make non-anon. data available?
+
+## What you'll see
+
+![](images/twitterdev.png){fig-align="center"}
+
+Or a live example...
+
+## What you'll see
+
+This is what the [Developer Portal](https://developer.twitter.com/en/portal/dashboard) looks like
+
+## Getting started...
+
+![](images/TWITTER_BEARER.gif){fig-align="center"}
+
+Don't forget to **Restart R**
+
+## After we've done that...
+
+We're good to go 🥳
+
+## After we've done that...
+
+We're good to go 🥳
+
+But **before** we do that...
+
+## What's an API anyway?
+
+-   We're talking about *Web APIs*
+-   "**A**pplication **P**rogramming **I**nterface"
+-   Helpful to think about compared to scraping...
+
+## Scraping Twitter
+
+-   TODO Insert gifcap here
+
+## Using the Twitter API
+
+-   TODO Insert gifcap here
+
+## Requesting versus scraping
+
+-   **Scraping:**
+    -   Extracts visible content from screen
+
+    -   Often trial and error as not optimized for serving data ( legibility not readability)
+-   **API calls**
+    -   Requests content from a "blank" version of page
+
+    -   Delivers data in more readily usable format (JSON, csv etc.)
+
+## What does it look like?
+
+-   Essentially, a long URL string...
+
+-   TODO Insert example API request here
+
+## What is it made of?
+
+1.  A query
+2.  An endpoint
+3.  Optional parameters
+
+## What is it made of?
+
+```{r, echo = T}
+
+my_query <- "#BLM lang:EN"
+
+endpoint_url <- "https://api.twitter.com/2/tweets/search/all"
+
+params <- list(
+  "query" = my_query,
+  "start_time" = "2021-01-01T00:00:00Z",
+  "end_time" = "2021-07-31T23:59:59Z",
+  "max_results" = 20
+)
+
+```
+
+## What is it made of?
+
+```{r, echo = T}
+
+my_query <- "#BLM lang:EN"
+
+endpoint_url <- "https://api.twitter.com/2/tweets/search/all"
+
+params <- list(
+  "query" = my_query,
+  "start_time" = "2021-01-01T00:00:00Z",
+  "end_time" = "2021-07-31T23:59:59Z",
+  "max_results" = 20
+)
+
+params
+
+```
+
+## But we don't often do this...
+
+-   Pre-packaged libraries more common
+    -   E.g., `academictwitteR`
+        -   Co-developed with [Justin Ho](https://github.com/justinchuntingho) and [Chung-Hong Chan](https://github.com/chainsawriot)
+
+![](images/athex.png){fig-align="right" width="300"}
+
+## So what we'll do is ...
+
+-   We'll focus on `academictwitteR`
+-   But we'll also be thinking later more generally about:
+    -   APIs
+
+    -   research design
