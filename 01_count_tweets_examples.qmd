@@ -1,0 +1,95 @@
+---
+title: "Counting Tweets Examples"
+subtitle: "Oxford Spring School, 2022"
+author: Christopher Barrie
+format: revealjs
+editor: visual
+---
+
+## Introduction
+
+-   Why count tweets?
+    -   Test your API call
+
+    -   **Of substantive interest**
+
+        -   But... design considerations (normalizing)
+
+## Counting tweets
+
+-   As barometer of public opinion
+
+![](images/euref.png))\
+
+Source: [here](https://blogs.lse.ac.uk/europpblog/2016/06/22/twitter-brexit-remainers-poised-to-bite)
+
+## Counting tweets
+
+-   As measure of issue salience
+
+![](images/mpclim.png){fig-align="right" width="400"}
+
+Source: [here](https://github.com/cjbarrie/mp_enviro/blob/main/Climate_Protest_public.pdf)
+
+## Counting tweets
+
+-   As archival source
+
+![](images/storywrang.png){fig-align="right" width="400"}
+
+Source: [here](https://www.science.org/doi/10.1126/sciadv.abe6534) and [here](https://storywrangling.org/)
+
+## Design considerations
+
+-   Is this a barometer of *offline* opinion...?
+
+## Design considerations
+
+-   Is this a barometer of *offline* opinion...?
+
+![](images/twitrep.png){fig-align="right" width="400"}
+
+Source: [here](https://journals.sagepub.com/doi/10.1177/2053168017720008)
+
+## Design considerations
+
+-   Is this an appropriate measure of issue salience?
+
+    -   What % of MPs are on Twitter?
+
+## Design considerations
+
+-   Is this an appropriate measure of issue salience?
+
+    -   What % of MPs are on Twitter?
+    -   Answer: \~90% (see this [useful website](https://www.politics-social.com/))
+        -   Coverage questions similar to survey design:
+
+            -   Does my sample capture population of interest?
+
+                -   What is the coverage?
+
+                -   Is there temporal bias?
+
+                -   Is there (equivalent) non-response?
+
+## Design considerations
+
+-   Is this an appropriate measure of issue salience?
+
+    -   Does this capture online *and* offline dimensions?
+        -   Is communication here domain-specific?
+
+        -   How could we tell?
+
+## Group work
+
+1.  Come up with a question answerable using tweet counts
+2.  Formulate code needed to request that data
+3.  (If access granted) make the API call to get data
+4.  Consider limitations + design considerations
+    -   What bias might be built in?
+
+    -   Does this illuminate dynamics outside online domain?
+
+    -   What is the coverage like?
