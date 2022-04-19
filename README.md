@@ -12,3 +12,9 @@ Repo of  materials for Oxford Spring School in Advanced Research Methods: Analys
 - Code slides: [here](https://raw.githack.com/cjbarrie/oxspsch/main/01_count.html)
 - Applied slides: [here](https://raw.githack.com/cjbarrie/oxspsch/main/01_count_tweets_examples.html)
 - Script(s): [here](https://github.com/cjbarrie/oxspsch/blob/main/01_count_tweets.R)
+
+## Tweet content
+
+- Code slides: [here](https://raw.githack.com/cjbarrie/oxspsch/main/02_get_tweets.html)
+- Applied slides: [here](https://raw.githack.com/cjbarrie/oxspsch/main/02_get_tweets_examples.html)
+- Script(s): [here](https://github.com/cjbarrie/oxspsch/blob/main/02_get_tweets.R)

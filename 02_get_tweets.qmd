@@ -1,0 +1,793 @@
+---
+title: "Getting Tweet Content"
+subtitle: "Oxford Spring School, 2022"
+author: Christopher Barrie
+format: revealjs
+editor: visual
+---
+
+## Introduction
+
+-   Why get tweets?
+    -   Testing API call (again...)
+
+    -   We can investigate user characteristics
+
+    -   We can investigate text beyond keywords
+
+    -   We can investigate additional tweet characteristics (metrics, annotations)
+
+## Getting tweets
+
+```{r, eval = T, echo = F}
+library(academictwitteR)
+library(dplyr)
+library(lubridate)
+library(ggplot2)
+```
+
+```{r, eval = F, echo = T}
+#| code-line-numbers: "|6|7|8|9|10|11|12|13"
+
+library(academictwitteR)
+library(dplyr)
+library(lubridate)
+library(ggplot2)
+
+tweetsblm <- get_all_tweets(
+  query = "BLM",
+  start_tweets = "2020-01-01T00:00:00Z",
+  end_tweets = "2020-01-05T00:00:00Z",
+  bearer_token = get_bearer(),
+  file = "data/blmtweets.rds",
+  data_path = "data/json_data/",
+  n = 500
+)
+```
+
+## Get tidy format
+
+```{r, eval = F, echo = T}
+
+tweetsblmb <- bind_tweets("data/json_data/", output_format = "tidy")
+
+```
+
+## Note data structure
+
+```{r, eval = T, echo = T}
+
+tweetsblm <- readRDS("data/blmtweets.rds")
+
+tweetsblmb <- bind_tweets("data/json_data/", output_format = "tidy")
+
+```
+
+::: panel-tabset
+### JSONs
+
+```{r, echo = F, eval = T}
+str(tweetsblmb)
+```
+
+### .rds
+
+```{r, eval = T, echo = F}
+str(tweetsblm)
+```
+:::
+
+## Querying by user
+
+```{r, eval = F, echo = T}
+#| code-line-numbers: "|2"
+
+tweetscjb <- get_all_tweets(
+  user = "cbarrie",
+  start_tweets = "2015-01-01T00:00:00Z",
+  end_tweets = "2020-01-05T00:00:00Z",
+  bearer_token = get_bearer(),
+  file = "data/cjbtweets.rds",
+  n = 500
+)
+```
+
+## Querying by user
+
+```{r, eval = T, echo = F}
+
+tweetscjb <- readRDS("data/cjbtweets.rds")
+
+```
+
+```{r, eval = T, echo = F}
+
+kableExtra::kable(tweetscjb)
+
+```
+
+## Get user profile
+
+-   N.B. not required if binding JSONs...
+-   But if using .rds:
+
+```{r, eval = T, echo = T}
+
+prof <- readRDS("data/cjbprof.rds")
+
+```
+
+-   We can get user-level info. from unique ID:
+
+```{r, eval = F, echo = T}
+
+id <- unique(tweetscjb$author_id)
+
+prof <- get_user_profile(id)
+
+```
+
+```{r, eval = T, echo = F}
+
+kableExtra::kable(prof)
+
+```
+
+## Querying logics
+
+See [here](https://developer.twitter.com/en/docs/twitter-api/tweets/search/integrate/build-a-query#boolean) for full details of logical operators in Twitter API
+
+## Querying logics
+
+- OR is implicit for character vector
+
+```{r, eval = F, echo = T}
+#| code-line-numbers: "|3"
+tweets <-
+  get_all_tweets(
+    query = c("happy", "new", "year"),
+    start_tweets = "2019-12-31T10:00:00Z",
+    end_tweets = "2020-01-01T10:00:00Z"
+  )
+
+```
+
+## Querying logics
+
+- AND is implicit for single character string
+- But this does **not** mean exact phrase
+
+```{r, eval = F, echo = T}
+#| code-line-numbers: "|3"
+
+tweets <-
+  get_all_tweets(
+    query = c("happy new year"),
+    start_tweets = "2019-12-31T10:00:00Z",
+    end_tweets = "2020-01-01T10:00:00Z"
+  )
+
+```
+
+## Querying logics
+
+- AND is implicit for single character string
+- Exact phrase can be forced with additional parameter
+
+```{r, eval = F, echo = T}
+#| code-line-numbers: "|3|6"
+
+tweets <-
+  get_all_tweets(
+    query = c("happy new year"),
+    start_tweets = "2019-12-31T10:00:00Z",
+    end_tweets = "2020-01-01T10:00:00Z",
+    exact_phrase = T
+  )
+
+```
+
+## Sampling tweets
+
+-   For 1% sample... use `rtweet`
+-   Otherwise, `academictwitteR` can be used to derive sample. How?
+    -   Sample by parameters of relevance (e.g., language, location)
+
+    -   Select subpopulation of interest (e.g., MPs, followers of select accounts (to come), news organizations
+
+## Sampling tweets
+
+```{r, eval = F, echo = T}
+#| code-line-numbers: "|6|7|8"
+
+tweets_seatt <-
+  get_all_tweets(
+    query = "happy",
+    start_tweets = "2019-12-31T10:00:00Z",
+    end_tweets = "2020-01-01T10:00:00Z",
+    country = "US", 
+    place = "seattle",
+    lang = "en",
+    n = 500
+  )
+
+```
+
+## Sampling tweets (bbox)
+
+```{r, eval = F, echo = T}
+#| code-line-numbers: "|6|7|8|9"
+
+tweets <-
+  get_all_tweets(
+    query = "happy",
+    start_tweets = "2019-12-31T10:00:00Z",
+    end_tweets = "2020-01-01T10:00:00Z",
+    country = "US", 
+    place = "seattle",
+    lang = "en",
+    bbox = c(-122.375679, 47.563554, -122.266159, 47.643417)
+  )
+```
+
+-   Use e.g., [http://bboxfinder.com/](http://bboxfinder.com/#47.563554,-122.375679,47.643417,-122.266159)
+    -   Must specify long. and lat. of SW and NE corners
+
+## Query length limits
+
+- Max. query length (in characters) is 1024
+- If we query multiple users as follows, it will [fail](https://github.com/cjbarrie/academictwitteR/issues/184):
+
+
+```{r, eval = F, echo = T}
+mps <- c(
+    "zarahsultana",
+    "Y_FovargueMP",
+    "YvetteCooperMP",
+    "YasminQureshiMP",
+    "William_Wragg",
+    "BillCashMP",
+    "willquince",
+    "wesstreeting",
+    "Wera_Hobhouse",
+    "morton_wendy",
+    "wendychambLD",
+    "WayneDavid_MP",
+    "VirendraSharma",
+    "VictoriaPrentis",
+    "vickyfoxcroft",
+    "vickyford",
+    "Valerie_VazMP",
+    "TulipSiddiq",
+    "TracyBrabin",
+    "tracey_crouch",
+    "tony4rochdale",
+    "ToniaAntoniazzi",
+    "TommySheppard",
+    "TomTugendhat",
+    "Tom_Randall",
+    "VotePursglove",
+    "tomhunt1988",
+    "tobyperkinsmp",
+    "Tobias_Ellwood",
+    "timloughton",
+    "timfarron",
+    "theresa_may",
+    "theodoraclarke",
+    "ThangamMP",
+    "TanDhesi",
+    "TaiwoOwatemi",
+    "TahirAliMP",
+    "Q66Suzi",
+    "SuellaBraverman",
+    "Stuart4WolvesSW",
+    "Stuart_McDonald",
+    "StuartAndrew",
+    "StewartMcDonald",
+    "StewartHosieSNP",
+    "StevenBonnarSNP",
+    "SteveBakerHW",
+    "SteveReedMP",
+    "steve_mccabe",
+    "stevedouble",
+    "BrineMP",
+    "stephenctimms",
+    "StephenMorganMP",
+    "Metcalfe_SBET",
+    "SMcPartland",
+    "SKinnock",
+    "S_Hammond",
+    "StephenFlynnSNP",
+    "StephenFarryMP",
+    "SDoughtyMP",
+    "SCrabbPembs",
+    "SteveBarclay",
+    "Steph_Peacock",
+    "stellacreasy",
+    "Siobhan_Baillie",
+    "Siobhain_Mc",
+    "simonjamesjupp",
+    "Simon4NDorset",
+    "Simonhartmp",
+    "simonfell",
+    "SimonClarkeMP",
+    "baynes_simon",
+    "sheryllmurray",
+    "Shaun4WBW",
+    "SharonHodgsonMP",
+    "ShaileshVara",
+    "ShabanaMahmood",
+    "SelaineSaxby",
+    "SeemaMalhotra1",
+    "scottmann4NC",
+    "ScottBentonMP",
+    "SarahOwen_",
+    "sarahjolney1",
+    "LabourSJ",
+    "SarahGreenLD",
+    "Dines4Dales",
+    "SarahChampionMP",
+    "AthertonNWales",
+    "SarBritcliffeMP",
+    "bhatti_saqib",
+    "eastantrimmp",
+    "SamTarry",
+    "SallyAnn1066",
+    "sajidjavid",
+    "RuthNewportWest",
+    "RuthEdwardsMP",
+    "RuthCadbury",
+    "rushanaraali",
+    "Royston_Smith",
+    "RosieDuffield1",
+    "rosie4westlancs",
+    "ronniecowan",
+    "SirRogerGale",
+    "WalkerWorcester",
+    "RobinMillarMP",
+    "RobertSyms",
+    "neill_bob",
+    "robertlargan",
+    "RobertJenrick",
+    "halfon4harlowMP",
+    "robertcourts",
+    "RobertBuckland",
+    "_RobbieMoore",
+    "AylesburyTories",
+    "RishiSunak",
+    "RicHolden",
+    "RichardGrahamUK",
+    "RThomsonMP",
+    "RichardBurgon",
+    "richardbaconmp",
+    "Rehman_Chishti",
+    "pow_rebecca",
+    "RLong_Bailey",
+    "RebeccaHarrisMP",
+    "TeamRanil",
+    "RachelReevesMP",
+    "redditchrachel",
+    "rach_hopkins",
+    "RachaelMaskell",
+    "pritipatel",
+    "PreetKGillMP",
+    "Dunne4Ludlow",
+    "PhilipDaviesUK",
+    "peterkyle",
+    "PeterGrantMP",
+    "Gibbo4Darlo",
+    "Peter_Dowd",
+    "PeterBoneUK",
+    "peter_aldous",
+    "PeteWishart",
+    "PennyMordaunt",
+    "Pauline_Latham",
+    "PaulaBarkerMP",
+    "scullyp",
+    "PaulMaynardUK",
+    "PaulMaskeyMP",
+    "PaulHowellMP",
+    "pauljholmes",
+    "PaulGirvanMP",
+    "paulbristow79",
+    "PaulBlomfieldMP",
+    "GradySNP",
+    "PGibsonSNP",
+    "patmcfaddenmp",
+    "OwenThompson",
+    "OwenPaterson",
+    "OrfhlaithBegley",
+    "_OliviaBlake",
+    "OliverHealdUK",
+    "OliverDowden",
+    "Nus_Ghani",
+    "nigelmills",
+    "HuddlestonNigel",
+    "nigelmp",
+    "nadams",
+    "Nicola4WBE",
+    "twocitiesnickie",
+    "NickTorfaen",
+    "BlaenauGwentMP",
+    "NickGibbUK",
+    "NickFletcherMP",
+    "NiaGriffithMP",
+    "neil_parish",
+    "NeilDotObrien",
+    "DrNeilHudson",
+    "neilgraysnp",
+    "coyleneil",
+    "JNHanvey",
+    "NazShahBfd",
+    "NavPMishra",
+    "NatalieElphicke",
+    "NadiaWhittomeMP",
+    "nadhimzahawi",
+    "munirawilson",
+    "YasinForBedford",
+    "mimsdavies",
+    "mikejwood",
+    "MikeKaneMP",
+    "MikeAmesburyMP",
+    "MickeyBradySF",
+    "MickWhitleyMP",
+    "gildernewm",
+    "michelledonelan",
+    "Michael4MDNP",
+    "michaelgove",
+    "Mike_Fabricant",
+    "Michael_Ellis1",
+    "MhairiBlack",
+    "MelJStride",
+    "Meg_HillierMP",
+    "mtpennycook",
+    "Offord4Hendon",
+    "MattHancock",
+    "MattWestern_",
+    "mattwarman",
+    "Matt_VickersMP",
+    "MattRodda",
+    "MaryRobinson01",
+    "GlindonMary",
+    "marykfoy",
+    "MartynDaySNP",
+    "MartinVickers",
+    "MartinJDocherty",
+    "MarshadeCordova",
+    "MarkTamiMP",
+    "Mark_Spencer",
+    "MPritchardUK",
+    "MarkPawsey",
+    "markjenkinsonmp",
+    "MpHendrick",
+    "Mark_J_Harper",
+    "Mark4WyreForest",
+    "mark4dewsbury",
+    "marionfellows",
+    "MarieRimmer",
+    "MariaMillerUK",
+    "meaglemp",
+    "mariacaulfield",
+    "margarethodge",
+    "MGreenwoodWW",
+    "MargaretFerrier",
+    "Marcus4Nuneaton",
+    "MarcusFysh",
+    "marcolonghi4dn",
+    "maggie_erewash",
+    "lynbrownmp",
+    "LukePollard",
+    "LukeHall",
+    "drlukeevans",
+    "LucyMPowell",
+    "lucyfrazermp",
+    "lucyallan",
+    "LouHaigh",
+    "lloyd_rm",
+    "LizTwistMP",
+    "LSRPlaid",
+    "leicesterliz",
+    "lisanandy",
+    "DrLisaCameronMP",
+    "LindsayHoyle_MP",
+    "LilianGreenwood",
+    "liambyrnemp",
+    "lia_nici",
+    "LeoDochertyUK",
+    "Lee4NED",
+    "LeeAndersonMP",
+    "LaylaMoran",
+    "lrobertsonTewks",
+    "Laura__Farris",
+    "KwasiKwarteng",
+    "kitmalthouse",
+    "KirstySNP",
+    "kirstenoswald",
+    "KimJohnsonMP",
+    "KieranMullanUK",
+    "khalid4PB",
+    "kevinhollinrake",
+    "kevin_j_foster",
+    "KevinBrennanMP",
+    "KevanJonesMP",
+    "KerryMP",
+    "KennyMacAskill",
+    "KemiBadenoch",
+    "KellyTolhurst",
+    "Keir_Starmer",
+    "K_Fletcher_MP",
+    "KateOsborneMP",
+    "KateOsamor",
+    "Kate_HollernMP",
+    "KateGreenSU",
+    "KarlTurnerMP",
+    "karlmccartney",
+    "karinsmyth",
+    "KarenPBuckMP",
+    "JustinTomlinson",
+    "justinmadders",
+    "JulieMarsonMP",
+    "JulieElliottMP",
+    "JulianSturdy",
+    "JulianSmithUK",
+    "julianknight15",
+    "JuliaLopezMP",
+    "JudithCummins",
+    "joymorrissey",
+    "jreynoldsMP",
+    "JonathanLord",
+    "JDjanogly",
+    "JonAshworth",
+    "jon_trickett",
+    "JonCruddas_1",
+    "JohnnyMercerUK",
+    "JohnMcNallySNP",
+    "JWhittingdale",
+    "John4Carlisle",
+    "spellar",
+    "johnredwood",
+    "JohnPenroseNews",
+    "MrJohnNicolson",
+    "johnmcdonnellMP",
+    "John2Win",
+    "JHowellUK",
+    "JohnHealey_MP",
+    "JohnGlenUK",
+    "johnfinucane",
+    "JohnCryerMP",
+    "joannaccherry",
+    "JoStevensLabour",
+    "jogideon",
+    "Jochurchill4",
+    "JimShannonMP",
+    "JimfromOldham",
+    "Jill4Hartlepool",
+    "jessicamordenmp",
+    "Jesse_Norman",
+    "jessphillips",
+    "JeromeMayhew",
+    "Jeremy_Hunt",
+    "jeremycorbyn",
+    "J_Donaldson_MP",
+    "JeffSmithetc",
+    "JasonMcCartney",
+    "JanetDaby",
+    "Jane_Stevenson_",
+    "JaneMHunt",
+    "Jamie4North",
+    "JamieWallisMP",
+    "jamesowild",
+    "JamesSunderl",
+    "jamesmurray_ldn",
+    "JamesMorris",
+    "JSHeappey",
+    "JGray",
+    "JamesDuddridge",
+    "JamesDavies",
+    "JamesDalyMP",
+    "JamesCleverly",
+    "jc4southsuffolk",
+    "JBrokenshire",
+    "JakeBerry",
+    "JacobYoungMP",
+    "Jacob_Rees_Mogg",
+    "JackieDP",
+    "JackLopresti",
+    "JackDromeyMP",
+    "imranahmadkhan",
+    "Imran_HussainMP",
+    "IanMurrayMP",
+    "IanMearnsMP",
+    "IanLaveryMP",
+    "IanByrneMP",
+    "Ianblackford_MP",
+    "iainastewart",
+    "MPIainDS",
+    "HywelPlaidCymru",
+    "HuwMerriman",
+    "HollyLynch5",
+    "hilarybennmp",
+    "HenrySmithUK",
+    "Helen_Whately",
+    "helenhayes_",
+    "HelenGrantMP",
+    "HeatherWheeler",
+    "hbaldwin",
+    "HarrietHarman",
+    "HannahB4LiviMP",
+    "GuyOpperman",
+    "gregsmith_uk",
+    "GregKnight",
+    "GregHands",
+    "GregClarkMP",
+    "grantshapps",
+    "grahamemorris",
+    "grahamstuart",
+    "SirGrahamBrady",
+    "GillianKeegan",
+    "GillFurnissMP",
+    "GilesWatling",
+    "GeraldJonesLAB",
+    "GeraintDaviesMP",
+    "GeorgeFreemanMP",
+    "Geoffrey_Cox",
+    "GavinWilliamson",
+    "GRobinsonDUP",
+    "GavNewlandsSNP",
+    "garystreeterSWD",
+    "GarySambrook89",
+    "GarethThomasMP",
+    "GarethDavies_MP",
+    "GarethBaconMP",
+    "gaganmohindra",
+    "FrancieMolloy",
+    "FloEshalomi",
+    "PutneyFleur",
+    "FeryalClark",
+    "FelicityBuchan",
+    "JonesyFay",
+    "FabianLeedsNE",
+    "EstherMcVey1",
+    "EmmaLewellBuck",
+    "EmmaHardyMP",
+    "EmilyThornberry",
+    "ElliotColburn",
+    "elliereeves",
+    "trussliz",
+    "eleanor4epping",
+    "edwardtimpson",
+    "Ed_Miliband",
+    "EdwardLeighMP",
+    "EdwardJDavey",
+    "EddieHughes4WN",
+    "duncancbaker",
+    "drewhendrySNP",
+    "theresecoffey",
+    "RupaHuq",
+    "DrRosena",
+    "Dr_PhilippaW",
+    "LiamFox",
+    "drcarolinej",
+    "AWMurrison",
+    "alanwhiteheadmp",
+    "Douglas4Moray",
+    "DougChapmanSNP",
+    "DominicRaab",
+    "HackneyAbbott",
+    "DianaJohnsonMP",
+    "DesmondSwayne",
+    "DerekTwiggMP",
+    "DerekThomasUK",
+    "DeidreBrock",
+    "DehennaDavison",
+    "Debbie_abrahams",
+    "dean4watford",
+    "DawnButlerBrent",
+    "DJWarburton",
+    "DavidTCDavies",
+    "DSimmonds_RNP",
+    "DavidRutley",
+    "DavidMundellDCT",
+    "davidmorrisml",
+    "DavidLinden",
+    "DavidLammy",
+    "DavidJonesMP",
+    "david4wantage",
+    "DavidEvennett",
+    "david_duguid",
+    "DavidDavisMP",
+    "amessd_southend",
+    "DaveDooganSNP",
+    "darrenpjones",
+    "DarrenG_Henry",
+    "danny__kruger",
+    "DanielZeichner",
+    "DKShrewsbury",
+    "DanJarvisMP",
+    "DanCardenMP",
+    "DamianHinds",
+    "DamianGreen",
+    "DamianCollins",
+    "libdemdaisy",
+    "CrispinBlunt",
+    "craig4monty",
+    "CWhittaker_MP",
+    "craig4nwarks",
+    "cmackinlay",
+    "ConorMcGinn",
+    "ConorBurnsUK",
+    "columeastwood",
+    "labourlewis",
+    "CliveEfford",
+    "ClaudiaWebbe",
+    "ClaireHanna",
+    "ClaireCoutinho",
+    "ChrisPincher",
+    "ChrisHazzardSF",
+    "cajardineMP",
+    "Rees4Neath",
+    "Christian4BuryS",
+    "ChrisM4Chester",
+    "ChrisStephens",
+    "CSkidmoreUK",
+    "CPhilpOfficial",
+    "chrisloder",
+    "ChrisLawSNP",
+    "chhcalling",
+    "CGreenUK",
+    "Chris_EvansMP",
+    "CPJElmore",
+    "ChrisClarksonMP",
+    "RhonddaBryant",
+    "NorwichChloe",
+    "ChiOnwurah",
+    "thisischerilyn",
+    "charlotte2153",
+    "CharlesWalkerMP",
+    "CatherineWest1",
+    "CatMcKinnell",
+    "CatSmithMP",
+    "carolynharris24",
+    "carolinenokes",
+    "CarolineLucas",
+    "cj_dinenage",
+    "Caroline_Ansell",
+    "CMonaghanSNP",
+    "carlalockhart",
+    "bphillipsonMP",
+    "BrendanOHaraMP",
+    "Bren4Bassetlaw",
+    "BrandonLewis",
+    "BorisJohnson",
+    "IoWBobSeely",
+    "BobBlackman",
+    "BimAfolami",
+    "Bill_Esterson",
+    "BethWinterMP",
+    "bernardjenkin",
+    "BWallaceMP",
+    "DrBenSpencer",
+    "BenMLake",
+    "Ben_Everitt",
+    "BenPBradshaw",
+    "BBradley_Mans",
+    "BellRibeiroAddy",
+    "BarrySheerman",
+    "BarryGardiner",
+    "KeeleyMP",
+    "Bambos_MP",
+    "ApsanaBegumMP",
+    "antony_hig",
+    "AnthonyMangnal1",
+    "ab4scambs",
+    "AnnelieseDodds",
+    "annietrev")
+
+tweetscjb <- get_all_tweets(
+  user = mps,
+  start_tweets = "2015-01-01T00:00:00Z",
+  end_tweets = "2020-01-05T00:00:00Z",
+  bearer_token = get_bearer(),
+  n = 500
+)
+```

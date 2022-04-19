@@ -84,7 +84,7 @@ Source: [here](https://journals.sagepub.com/doi/10.1177/2053168017720008)
 
 ## Group work
 
-1.  Come up with a question answerable using tweet counts
+1.  Come up with a question answerable using `get_tweet_counts()`
 2.  Formulate code needed to request that data
 3.  (If access granted) make the API call to get data
 4.  Consider limitations + design considerations

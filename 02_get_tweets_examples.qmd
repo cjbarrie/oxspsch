@@ -1,0 +1,141 @@
+---
+title: "Getting Tweet Content Examples"
+subtitle: "Oxford Spring School, 2022"
+author: Christopher Barrie
+format: revealjs
+editor: visual
+---
+
+## Introduction
+
+-   Why get tweets?
+    -   Testing API call (again...)
+
+    -   We can investigate text beyond keywords
+
+    -   We can investigate additional tweet characteristics (metrics, annotations)
+
+    -   We can investigate user characteristics...
+
+## Getting tweets
+
+-   As barometer of public opinion
+
+![](images/flores1.png)\
+
+## Getting tweets
+
+-   As barometer of public opinion
+    -   Coverage?
+
+## Getting tweets
+
+-   As barometer of public opinion
+    -   Bias?
+
+![](images/flores4.png){width="675"}\
+
+## Getting tweets
+
+-   As barometer of public opinion
+    -   Advantages versus surveys?
+        -   Real-time ("always on")
+
+        -   More accurately/realistically measured (?)
+
+![](images/flores3.png){width="589"}\
+
+## Sampling tweets
+
+-   By keyword
+
+![](images/flores5.png)
+
+## Geolocating tweets
+
+-   By user-reported location
+
+![](images/flores6.png)
+
+## Getting tweets
+
+-   As measure of individual attitudes
+
+![](images/mitts1.png))\
+
+## Getting tweets
+
+-   As measure of individual attitudes
+
+![](images/mitts2.png){width="451"}\
+
+## Getting tweets
+
+-   As measure of individual attitudes
+
+![](images/mitts3.png){width="628"}
+
+## Sampling tweets
+
+-   (Here) reliance on hacked lists
+-   Continued streaming
+
+![](images/mitts4.png){fig-align="right" width="400"}
+
+## Sampling tweets
+
+Design considerations:
+
+-   Attrition via takedown
+-   Tweet honesty?
+-   Alternative sampling strategy?
+-   Geolocation...
+
+## Geolocating tweets
+
+-   V small pct. of tweets are geolocated (.1--1%)
+-   Have to rely on coarse-grained location
+-   Or infer from "friends" (whom an individual follows)
+    -   Blunt force: frequency of locations of friends network
+
+    -   More precise: spatial label propagation
+
+        -   Get location of friends
+
+            -   Get locations of friends of friends...
+
+        -   Predict user location from distribution
+
+## Coding tweets
+
+1.  Coding criteria
+2.  MTurk
+    1.  Use labels as outcome
+
+    2.  Use to train supervised ML algorithm
+
+## Getting tweets
+
+-   As a measure of popularity/engagement
+
+![](images/alshaabi1.png)\
+
+## Getting tweets
+
+-   As a measure of popularity/engagement
+
+![](images/wu1.png){width="643"}\
+
+## Getting tweets
+
+-   As a measure of popularity/engagement
+    -   Accurate measure of human attention?
+
+    -   Accurate measure of endorsement?
+
+## Group work
+
+1.  Come up with a question answerable using `get_all_tweets()`
+2.  Formulate code needed to request that data
+3.  (If access granted) make the API call to get data
+4.  Consider limitations + design considerations
