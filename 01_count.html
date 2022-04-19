@@ -490,6 +490,107 @@
 <span id="cb6-10"><a href="#cb6-10"></a>  <span class="at">n =</span> <span class="dv">500</span></span>
 <span id="cb6-11"><a href="#cb6-11"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+</section>
+<section id="adding-user-parameters" class="slide level2">
+<h2>Adding user parameters</h2>
+<div class="cell">
+
+</div>
+<div class="cell">
+<div class="sourceCode" id="cb7" data-code-line-numbers="|3|4|5"><pre class="sourceCode numberSource r cell-code number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a>tweetcounts <span class="ot">&lt;-</span> <span class="fu">count_all_tweets</span>(</span>
+<span id="cb7-2"><a href="#cb7-2"></a>  <span class="at">query =</span> <span class="st">"Hogmanay"</span>,</span>
+<span id="cb7-3"><a href="#cb7-3"></a>  <span class="at">users =</span> <span class="st">"edhogmanay"</span>,</span>
+<span id="cb7-4"><a href="#cb7-4"></a>  <span class="at">start_tweets =</span> <span class="st">"2019-12-27T00:00:00Z"</span>,</span>
+<span id="cb7-5"><a href="#cb7-5"></a>  <span class="at">end_tweets =</span> <span class="st">"2020-01-05T00:00:00Z"</span>,</span>
+<span id="cb7-6"><a href="#cb7-6"></a>  <span class="at">bearer_token =</span> <span class="fu">get_bearer</span>(),</span>
+<span id="cb7-7"><a href="#cb7-7"></a>  <span class="at">granularity =</span> <span class="st">"day"</span>,</span>
+<span id="cb7-8"><a href="#cb7-8"></a>  <span class="at">n =</span> <span class="dv">500</span></span>
+<span id="cb7-9"><a href="#cb7-9"></a>)</span>
+<span id="cb7-10"><a href="#cb7-10"></a></span>
+<span id="cb7-11"><a href="#cb7-11"></a>tweetcounts</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="cell-output-stdout">
+<pre><code>                       end                    start tweet_count
+1 2019-12-28T00:00:00.000Z 2019-12-27T00:00:00.000Z           1
+2 2019-12-29T00:00:00.000Z 2019-12-28T00:00:00.000Z           0
+3 2019-12-30T00:00:00.000Z 2019-12-29T00:00:00.000Z           1
+4 2019-12-31T00:00:00.000Z 2019-12-30T00:00:00.000Z           4
+5 2020-01-01T00:00:00.000Z 2019-12-31T00:00:00.000Z           6
+6 2020-01-02T00:00:00.000Z 2020-01-01T00:00:00.000Z           2
+7 2020-01-03T00:00:00.000Z 2020-01-02T00:00:00.000Z           3
+8 2020-01-04T00:00:00.000Z 2020-01-03T00:00:00.000Z           1
+9 2020-01-05T00:00:00.000Z 2020-01-04T00:00:00.000Z           0</code></pre>
+</div>
+</div>
+</section>
+<section id="normalizing" class="slide level2">
+<h2>Normalizing</h2>
+<div class="panel-tabset">
+<ul id="tabset-2" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-2-1">Counts</a></li><li><a href="#tabset-2-2">Baseline</a></li><li><a href="#tabset-2-3">Normalize</a></li><li><a href="#tabset-2-4">Plot 1</a></li><li><a href="#tabset-2-5">Plot 2</a></li></ul>
+<div class="tab-content">
+<div id="tabset-2-1">
+<div class="cell">
+
+</div>
+<div class="cell">
+<div class="sourceCode" id="cb9"><pre class="sourceCode numberSource r cell-code number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a>tweetcounts <span class="ot">&lt;-</span> <span class="fu">count_all_tweets</span>(</span>
+<span id="cb9-2"><a href="#cb9-2"></a>  <span class="at">query =</span> <span class="st">"immigration"</span>,</span>
+<span id="cb9-3"><a href="#cb9-3"></a>  <span class="at">start_tweets =</span> <span class="st">"2015-12-27T00:00:00Z"</span>,</span>
+<span id="cb9-4"><a href="#cb9-4"></a>  <span class="at">end_tweets =</span> <span class="st">"2020-01-05T00:00:00Z"</span>,</span>
+<span id="cb9-5"><a href="#cb9-5"></a>  <span class="at">bearer_token =</span> <span class="fu">get_bearer</span>(),</span>
+<span id="cb9-6"><a href="#cb9-6"></a>  <span class="at">granularity =</span> <span class="st">"day"</span>,</span>
+<span id="cb9-7"><a href="#cb9-7"></a>  <span class="at">n =</span> <span class="dv">5000</span></span>
+<span id="cb9-8"><a href="#cb9-8"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+<div id="tabset-2-2">
+<div class="cell">
+<div class="sourceCode" id="cb10"><pre class="sourceCode numberSource r cell-code number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1"></a>baselinecounts <span class="ot">&lt;-</span> <span class="fu">count_all_tweets</span>(</span>
+<span id="cb10-2"><a href="#cb10-2"></a>  <span class="at">query =</span> <span class="st">"therefore"</span>,</span>
+<span id="cb10-3"><a href="#cb10-3"></a>  <span class="at">start_tweets =</span> <span class="st">"2015-12-27T00:00:00Z"</span>,</span>
+<span id="cb10-4"><a href="#cb10-4"></a>  <span class="at">end_tweets =</span> <span class="st">"2020-01-05T00:00:00Z"</span>,</span>
+<span id="cb10-5"><a href="#cb10-5"></a>  <span class="at">bearer_token =</span> <span class="fu">get_bearer</span>(),</span>
+<span id="cb10-6"><a href="#cb10-6"></a>  <span class="at">granularity =</span> <span class="st">"day"</span>,</span>
+<span id="cb10-7"><a href="#cb10-7"></a>  <span class="at">n =</span> <span class="dv">5000</span></span>
+<span id="cb10-8"><a href="#cb10-8"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+<div id="tabset-2-3">
+<div class="cell">
+<div class="sourceCode" id="cb11"><pre class="sourceCode numberSource r cell-code number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1"></a>normalize_counts <span class="ot">&lt;-</span> <span class="cf">function</span>(tweetcounts, baselinecounts) {</span>
+<span id="cb11-2"><a href="#cb11-2"></a>  tweetcounts <span class="ot">&lt;-</span> tweetcounts<span class="sc">$</span>tweet_count</span>
+<span id="cb11-3"><a href="#cb11-3"></a>  baselinecounts <span class="ot">&lt;-</span> baselinecounts<span class="sc">$</span>tweet_count</span>
+<span id="cb11-4"><a href="#cb11-4"></a>  normalized_counts <span class="ot">&lt;-</span> tweetcounts<span class="sc">/</span>baselinecounts</span>
+<span id="cb11-5"><a href="#cb11-5"></a>  <span class="fu">return</span>(normalized_counts)</span>
+<span id="cb11-6"><a href="#cb11-6"></a>}</span>
+<span id="cb11-7"><a href="#cb11-7"></a></span>
+<span id="cb11-8"><a href="#cb11-8"></a>tweetcounts<span class="sc">$</span>normalized_count <span class="ot">&lt;-</span></span>
+<span id="cb11-9"><a href="#cb11-9"></a>  <span class="fu">normalize_counts</span>(<span class="at">tweetcounts =</span> tweetcounts,</span>
+<span id="cb11-10"><a href="#cb11-10"></a>                   <span class="at">baselinecounts =</span> baselinecounts)</span>
+<span id="cb11-11"><a href="#cb11-11"></a></span>
+<span id="cb11-12"><a href="#cb11-12"></a><span class="fu">head</span>(tweetcounts<span class="sc">$</span>normalized_count)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-stdout">
+<pre><code>[1] 0.8641441 1.4070588 1.8567669 2.3317991 1.1134310 1.0938708</code></pre>
+</div>
+</div>
+</div>
+<div id="tabset-2-4">
+<div class="cell">
+<div class="cell-output-display">
+<p><img data-src="01_count_files/figure-revealjs/unnamed-chunk-32-1.png" width="960"></p>
+</div>
+</div>
+</div>
+<div id="tabset-2-5">
+<div class="cell">
+<div class="cell-output-display">
+<p><img data-src="01_count_files/figure-revealjs/unnamed-chunk-34-1.png" width="960"></p>
+</div>
+</div>
+</div>
+</div>
+</div>
 <div class="footer footer-default">
 
 </div>
