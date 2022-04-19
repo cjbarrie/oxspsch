@@ -11,24 +11,29 @@ editor: visual
 ### Day 1
 
 -   General intro.
--   `Authorization and connecting to the API`
--   `Understanding the payload`
--   `Making requests`
--   `Accessing data outside the API`
+-   `Counting tweets`
+    -   Applied examples
+
+    -   Group work
+-   `Getting tweets`
+    -   Applied examples
+
+    -   Group work
 
 ## Introduction
 
 ### Day 2
 
--   Twitter as data in social science
-    -   Twitter as barometer of public opinion
+-   `Getting friends/followers`
+    -   Applied examples
 
-    -   Twitter as experimental platform
+    -   Group work
+-   `Getting data outside the API`
+    -   Applied examples
 
-    -   Twitter to derive individual-level attributes
--   `Replication tasks`
--   `Understanding the payload`
--   `Making requests`
+    -   Group work
+-   `Replication task`
+    -   Group work
 
 ## Introduction
 
@@ -108,11 +113,11 @@ But **before** we do that...
 
 ## Scraping Twitter
 
--   TODO Insert gifcap here
+![](images/scrape.gif){fig-align="center"}
 
 ## Using the Twitter API
 
--   TODO Insert gifcap here
+![](images/api.gif){fig-align="center"}
 
 ## Requesting versus scraping
 
