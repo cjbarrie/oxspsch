@@ -1,0 +1,87 @@
+---
+title: "Getting Tweeters"
+subtitle: "Oxford Spring School, 2022"
+author: Christopher Barrie
+format: revealjs
+editor: visual
+---
+
+## Introduction
+
+-   Why get tweet*ers*?
+    -   Get network characteristics
+    -   Get user demographics
+    -   Linked survey designs
+
+## Getting tweeters
+
+```{r, eval = T, echo = T}
+library(academictwitteR)
+library(dplyr)
+library(lubridate)
+library(ggplot2)
+
+
+cjb_ID <- get_user_id("cbarrie")
+cjb_ID
+
+```
+
+## Getting whom I follow (friends)
+
+::: panel-tabset
+
+### User data
+
+```{r, eval = T, echo = F}
+userfwing <- readRDS("data/cjbfwing.rds")
+
+userfwingsamp <- userfwing %>%
+  sample_n(20)
+kableExtra::kable(userfwingsamp)
+```
+
+### IDs
+
+```{r, eval = F, echo = T}
+
+userfwing <- get_user_following(cjb_ID)
+
+ids <- userfwing$id
+
+head(ids)
+```
+```{r, eval = T, echo = F}
+ids <- userfwing$id
+head(ids)
+```
+:::
+
+## User-level inference
+
+```{r, eval = T, echo = T}
+devtools::install_github("pablobarbera/twitter_ideology/pkg/tweetscores")
+library(tweetscores)
+```
+
+## User-level inference
+```{r, eval=F, echo = T}
+results <- estimateIdeology("cbarrie", ids)
+plot(results)
+```
+
+```{r, eval=T, echo = F}
+results <- readRDS("data/cjbtscore.rds")
+plot(results)
+
+```
+
+## User-level geolocation
+
+```{r, eval = T, echo = T}
+userfwing %>%
+  group_by(location) %>%
+  summarise(count = n()) %>%
+  top_n(count)
+```
+

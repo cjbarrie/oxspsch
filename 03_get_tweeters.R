@@ -3,8 +3,9 @@ library(ggplot2)
 library(dplyr)
 
 #use https://tweeterid.com/ to convert your username to an ID
-
+#OR
 #get user @cbarrie
+get_user_id("cbarrie")
 cjb_ID <- "95226101"
 
 #find who he's following
@@ -32,7 +33,7 @@ devtools::install_github("pablobarbera/twitter_ideology/pkg/tweetscores")
 library(tweetscores)
 
 results <- estimateIdeology("cbarrie", ids)
-
+saveRDS(results, "data/cjbtscore.rds")
 plot(results)
 
 results <- estimateIdeology2("cbarrie", ids)
