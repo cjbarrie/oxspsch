@@ -22,5 +22,5 @@ Repo of  materials for Oxford Spring School in Advanced Research Methods: Analys
 ## Tweeters
 
 - Code slides: [here](https://raw.githack.com/cjbarrie/oxspsch/main/03_get_tweeters.html)
-- Applied slides: 
+- Applied slides: [here](https://raw.githack.com/cjbarrie/oxspsch/main/03_get_tweeters_examples.html)
 - Script(s): [here](https://github.com/cjbarrie/oxspsch/blob/main/03_get_tweeters.R)
