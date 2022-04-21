@@ -1,0 +1,63 @@
+---
+title: "Getting Tweeters Examples"
+subtitle: "Oxford Spring School, 2022"
+author: Christopher Barrie
+format: revealjs
+editor: visual
+---
+
+## Introduction
+
+-   Why get tweet*ers*?
+    -   Get network characteristics
+    -   Get user demographics
+    -   Linked survey designs
+
+## Introduction
+
+-   Why get tweet*ers*?
+    -   Get network characteristics
+    -   **Get user demographics**
+    -   Linked survey designs
+
+## Getting tweeters example
+
+-   As alternative to survey
+
+![](images/geolocwm.png)\
+
+## Geolocating
+
+![](images/geolocwm2.png)\
+
+## Getting ideology
+
+-   Using `tweetscores`
+
+![](images/wmfol.png)\
+
+## Getting demographics
+
+-   Using `M3` algorithm
+
+<https://github.com/euagendas/m3inference>
+
+## Comparing to ground truth
+
+![](images/ideowm.png)\
+
+## Limitations
+
+-   Measurement (estimation) error
+-   Bias...?
+    -   Offline versus online populations
+
+    -   Geolocation bias (?)
+-   Other applications...?
+
+## Group work
+
+1.  Come up with a question answerable using `get_user_followers()` or `get_user_following()`
+2.  Formulate code needed to request that data
+3.  (If access granted) make the API call to get data
+4.  Consider limitations + design considerations
