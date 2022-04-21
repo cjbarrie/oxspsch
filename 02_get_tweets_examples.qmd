@@ -135,7 +135,7 @@ Design considerations:
 
 ## Group work
 
-1.  Come up with a question answerable using `get_all_tweets()`
+1.  Replicate Flores (2017) using `get_all_tweets()` and another event of interest
 2.  Formulate code needed to request that data
 3.  (If access granted) make the API call to get data
 4.  Consider limitations + design considerations
