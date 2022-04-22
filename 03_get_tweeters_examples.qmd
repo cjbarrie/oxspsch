@@ -54,7 +54,7 @@ editor: visual
 
     -   Geolocation bias (?)
 -   Other applications...?
-        
+
 ## Group work
 
 1.  Come up with a question answerable using `get_user_followers()` or `get_user_following()`
@@ -68,7 +68,7 @@ editor: visual
     -   Twitter as confederate
 
         -   Uses: automated bot + randomization strategy
-        
+
 ## Other innovations
 
 -   Twitter as experimental platform
@@ -88,3 +88,11 @@ editor: visual
     -   "Linked survey designs"
 
         -   Uses: Twitter feed + survey questionnaire
+
+## Other innovations
+
+![](images/eady.png)
+
+## Other innovations
+
+![](images/eady2.png)
