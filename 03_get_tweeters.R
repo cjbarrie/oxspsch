@@ -8,7 +8,8 @@ tweet_IDs <- readRDS("data/wm_IDs_samp.rds")
 head(tweet_IDs)
 
 #throws an error still for some IDs (looking into this)
-hydrated_tweets <- hydrate_tweets(tweet_IDs, errors = T)
+hydrated_tweets <- hydrate_tweets(tweet_IDs, errors = T,
+                                  data_path = "data/hydrated_tweets/")
 
 #use https://tweeterid.com/ to convert your username to an ID
 #OR
