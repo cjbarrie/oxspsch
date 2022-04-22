@@ -23,7 +23,7 @@ editor: visual
         -   <https://catalog.docnow.io/>
 
         -   [Zenodo](https://zenodo.org/record/4540820#.YmJTYcaEaLc)
-        
+
 ## Hydrating
 
 ```{r, eval = T, echo = T}
@@ -34,7 +34,24 @@ head(tweet_IDs)
 ```{r, eval = F, echo = T}
 library(academictwitteR)
 
-hydrated_tweets <- hydrate_tweets(tweet_IDs)
+hydrated_tweets <- hydrate_tweets(tweet_IDs, errors = T)
+```
+```
+Batch 1 out of 10 : ids 823360655835168640 to 822916951878103040 
+Total  78  tweet(s) can't be retrieved.
+Total of  22  out of  1000  tweet(s) retrieved.
+Batch 2 out of 10 : ids 823501383282241408 to 822817264915378048 
+Total  154  tweet(s) can't be retrieved.
+Total of  46  out of  1000  tweet(s) retrieved.
+Batch 3 out of 10 : ids 823087701117337600 to 823227815374061440 
+Total  225  tweet(s) can't be retrieved.
+Total of  75  out of  1000  tweet(s) retrieved.
+Batch 4 out of 10 : ids 823045907264499712 to 825034383769767808 
+Total  301  tweet(s) can't be retrieved.
+Total of  99  out of  1000  tweet(s) retrieved.
+Batch 5 out of 10 : ids 822984540494950400 to 822996642618101760 
+Error in make_query(url = endpoint_url, params = params, bearer_token = bearer_token,  : 
+  something went wrong. Status code: 400
 ```
 
 ## Hydrating
