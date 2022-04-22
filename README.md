@@ -1,8 +1,8 @@
 # oxspsch
 
-Instructor: Christopher Barrie, Lecturer in Computational Sociology, School of Social and Political Science, University of Edinburgh
+**Instructor**: Christopher Barrie, Lecturer in Computational Sociology, School of Social and Political Science, University of Edinburgh
 
-Course description: Oxford Spring School in Advanced Research Methods, Analysing Twitter Data. Course designed as three-day workshop covering multiple aspects of the Twitter API, and using `academictwitteR` as the principal library to make API requests to the Twitter Academic Research Product Track API.
+**Course description**: Oxford Spring School in Advanced Research Methods, Analysing Twitter Data. Course designed as three-day workshop covering multiple aspects of the Twitter API, and using `academictwitteR` as the principal library to make API requests to the Twitter Academic Research Product Track API.
 
 ![Alt Text](coursebanner.png)
 
