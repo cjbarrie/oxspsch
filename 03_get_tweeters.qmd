@@ -34,7 +34,8 @@ head(tweet_IDs)
 ```{r, eval = F, echo = T}
 library(academictwitteR)
 
-hydrated_tweets <- hydrate_tweets(tweet_IDs, errors = T)
+hydrated_tweets <- hydrate_tweets(tweet_IDs, errors = T,
+                                  data_path = "data/hydrated_tweets/")
 ```
 ```
 Batch 1 out of 10 : ids 823360655835168640 to 822916951878103040 

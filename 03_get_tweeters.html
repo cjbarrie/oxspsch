@@ -427,7 +427,8 @@
 <div class="cell">
 <div class="sourceCode" id="cb3"><pre class="sourceCode numberSource r cell-code number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a><span class="fu">library</span>(academictwitteR)</span>
 <span id="cb3-2"><a href="#cb3-2"></a></span>
-<span id="cb3-3"><a href="#cb3-3"></a>hydrated_tweets <span class="ot">&lt;-</span> <span class="fu">hydrate_tweets</span>(tweet_IDs, <span class="at">errors =</span> T)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb3-3"><a href="#cb3-3"></a>hydrated_tweets <span class="ot">&lt;-</span> <span class="fu">hydrate_tweets</span>(tweet_IDs, <span class="at">errors =</span> T,</span>
+<span id="cb3-4"><a href="#cb3-4"></a>                                  <span class="at">data_path =</span> <span class="st">"data/hydrated_tweets/"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <pre><code>Batch 1 out of 10 : ids 823360655835168640 to 822916951878103040 
 Total  78  tweet(s) can't be retrieved.
@@ -511,335 +512,332 @@ Error in make_query(url = endpoint_url, params = params, bearer_token = bearer_t
  </thead>
 <tbody>
   <tr>
-   <td style="text-align:left;"> 229564414 </td>
-   <td style="text-align:left;"> https://t.co/dwR6l0DMbp </td>
-   <td style="text-align:left;"> 2010-12-22T18:45:58.000Z </td>
-   <td style="text-align:left;"> https://pbs.twimg.com/profile_images/613153826200121345/uQfFlEZQ_normal.jpg </td>
-   <td style="text-align:left;"> 15721 </td>
+   <td style="text-align:left;"> 2772818466 </td>
+   <td style="text-align:left;"> http://t.co/dcXO3BFFKi </td>
+   <td style="text-align:left;"> 2014-08-27T09:56:27.000Z </td>
+   <td style="text-align:left;"> https://pbs.twimg.com/profile_images/530648659751211009/njUakWs1_normal.png </td>
+   <td style="text-align:left;"> 5535 </td>
    <td style="text-align:left;"> FALSE </td>
-   <td style="text-align:left;"> minebocek </td>
-   <td style="text-align:left;"> @DukeU + @rstudio, 💜 #rstats + #RLadies, 🖋 @OpenIntroOrg + @citizenstat. cat videos = instant smiles. she/her. </td>
-   <td style="text-align:left;"> 0, 23, https://t.co/dwR6l0DMbp, http://mine-cr.com, mine-cr.com </td>
-   <td style="text-align:left;"> Mine Çetinkaya-Rundel </td>
-   <td style="text-align:left;"> Durham, NC </td>
-   <td style="text-align:left;"> FALSE </td>
-   <td style="text-align:left;"> 1453011914208989201 </td>
-   <td style="text-align:left;"> 95226101 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 3017241909 </td>
-   <td style="text-align:left;"> https://t.co/U9osFjNAkV </td>
-   <td style="text-align:left;"> 2015-02-04T11:51:07.000Z </td>
-   <td style="text-align:left;"> https://pbs.twimg.com/profile_images/1422111681623252994/y4hFlDoj_normal.jpg </td>
-   <td style="text-align:left;"> 1282300 </td>
-   <td style="text-align:left;"> TRUE </td>
-   <td style="text-align:left;"> englandcricket </td>
-   <td style="text-align:left;"> We Are England Cricket. The official home of all of the England Cricket teams on Twitter. </td>
-   <td style="text-align:left;"> 0, 23, https://t.co/U9osFjNAkV, http://www.ecb.co.uk, ecb.co.uk </td>
-   <td style="text-align:left;"> England Cricket </td>
-   <td style="text-align:left;"> NA </td>
-   <td style="text-align:left;"> FALSE </td>
-   <td style="text-align:left;"> NA </td>
-   <td style="text-align:left;"> 95226101 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 1259179609523970050 </td>
-   <td style="text-align:left;"> https://t.co/wM2oYvO73L </td>
-   <td style="text-align:left;"> 2020-05-09T17:53:22.000Z </td>
-   <td style="text-align:left;"> https://pbs.twimg.com/profile_images/1352762335459479553/3F7Tbzs8_normal.jpg </td>
-   <td style="text-align:left;"> 891 </td>
-   <td style="text-align:left;"> FALSE </td>
-   <td style="text-align:left;"> RLadiesTunis </td>
-   <td style="text-align:left;"> We are R-Ladies Tunis, a network of R practitioners in Tunisia.
-We are a local chapter of a global open source community, R Ladies Global (@RLadiesGlobal). </td>
-   <td style="text-align:left;"> 0, 23, https://t.co/wM2oYvO73L, https://www.meetup.com/fr-FR/rladies-tunis/, meetup.com/fr-FR/rladies-… </td>
-   <td style="text-align:left;"> R-Ladies Tunis </td>
-   <td style="text-align:left;"> Tunis, Tunisia </td>
-   <td style="text-align:left;"> FALSE </td>
-   <td style="text-align:left;"> 1506228575174803461 </td>
-   <td style="text-align:left;"> 95226101 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 1168003974 </td>
-   <td style="text-align:left;"> https://t.co/TBmsvC1gDI </td>
-   <td style="text-align:left;"> 2013-02-11T06:16:24.000Z </td>
-   <td style="text-align:left;"> https://pbs.twimg.com/profile_images/1484441370584842243/hchQzM3C_normal.jpg </td>
-   <td style="text-align:left;"> 5964 </td>
-   <td style="text-align:left;"> FALSE </td>
-   <td style="text-align:left;"> tslumley </td>
-   <td style="text-align:left;"> Statistics. Computing. Genetics. Choral music. 
-Product of more than one country. 
-May contain nuts.
-He/Him </td>
-   <td style="text-align:left;"> 0, 23, https://t.co/TBmsvC1gDI, http://notstatschat.rbind.io, notstatschat.rbind.io </td>
-   <td style="text-align:left;"> Thomas Lumley </td>
-   <td style="text-align:left;"> 🔑🟤 </td>
-   <td style="text-align:left;"> FALSE </td>
-   <td style="text-align:left;"> NA </td>
-   <td style="text-align:left;"> 95226101 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 517409213 </td>
-   <td style="text-align:left;"> https://t.co/JeskYwk3Zm </td>
-   <td style="text-align:left;"> 2012-03-07T09:29:05.000Z </td>
-   <td style="text-align:left;"> https://pbs.twimg.com/profile_images/1220325850840817664/l7OpeNvE_normal.jpg </td>
-   <td style="text-align:left;"> 2135 </td>
-   <td style="text-align:left;"> FALSE </td>
-   <td style="text-align:left;"> jschultecloos </td>
-   <td style="text-align:left;"> Marie Curie Fellow @GSI_Muenchen | PhD @EuropeanUni Political Science | Political Behaviour | Computational Social Science
-
-⭐ Rising Star Award 2021 @ECPR ⭐ </td>
-   <td style="text-align:left;"> 0, 23, https://t.co/JeskYwk3Zm, http://jschultecloos.github.io, jschultecloos.github.io </td>
-   <td style="text-align:left;"> Julia Schulte-Cloos </td>
-   <td style="text-align:left;"> NA </td>
-   <td style="text-align:left;"> FALSE </td>
-   <td style="text-align:left;"> 1481962072766361600 </td>
-   <td style="text-align:left;"> 95226101 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 1049709188266516481 </td>
-   <td style="text-align:left;"> https://t.co/j2TuxQMd6S </td>
-   <td style="text-align:left;"> 2018-10-09T17:12:27.000Z </td>
-   <td style="text-align:left;"> https://pbs.twimg.com/profile_images/1195754878569795585/pVeI6u4Y_normal.jpg </td>
-   <td style="text-align:left;"> 1302 </td>
-   <td style="text-align:left;"> FALSE </td>
-   <td style="text-align:left;"> m_levendusky </td>
-   <td style="text-align:left;"> Professor of Political Science and Stephen &amp; Mary Baran Chair in the Institutions of Democracy at the Annenberg Public Policy Center, University of Pennsylvania </td>
-   <td style="text-align:left;"> 0, 23, https://t.co/j2TuxQMd6S, http://web.sas.upenn.edu/mleven, web.sas.upenn.edu/mleven </td>
-   <td style="text-align:left;"> Matt Levendusky </td>
-   <td style="text-align:left;"> Philadelphia, PA </td>
-   <td style="text-align:left;"> FALSE </td>
-   <td style="text-align:left;"> 1459067776858042368 </td>
-   <td style="text-align:left;"> 95226101 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 1015706109255053317 </td>
-   <td style="text-align:left;"> https://t.co/P5Sf3vGuFs </td>
-   <td style="text-align:left;"> 2018-07-07T21:16:22.000Z </td>
-   <td style="text-align:left;"> https://pbs.twimg.com/profile_images/1187765724451868673/uVw1PWA7_normal.png </td>
-   <td style="text-align:left;"> 18181 </td>
-   <td style="text-align:left;"> FALSE </td>
-   <td style="text-align:left;"> pandas_dev </td>
-   <td style="text-align:left;">  </td>
-   <td style="text-align:left;"> 0, 23, https://t.co/P5Sf3vGuFs, https://pandas.pydata.org, pandas.pydata.org </td>
-   <td style="text-align:left;"> pandas </td>
-   <td style="text-align:left;"> NA </td>
-   <td style="text-align:left;"> FALSE </td>
-   <td style="text-align:left;"> NA </td>
-   <td style="text-align:left;"> 95226101 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 1053768884732547072 </td>
-   <td style="text-align:left;"> https://t.co/0V5VnFSl7c </td>
-   <td style="text-align:left;"> 2018-10-20T22:04:14.000Z </td>
-   <td style="text-align:left;"> https://pbs.twimg.com/profile_images/1485991104491180049/RhAuiINt_normal.jpg </td>
-   <td style="text-align:left;"> 135720 </td>
-   <td style="text-align:left;"> TRUE </td>
-   <td style="text-align:left;"> Fridays4future </td>
-   <td style="text-align:left;"> #FridaysForFuture International 🌎 | Global, youth-led, collective grassroots movement ✊🏿✊🏾✊🏽✊🏻| #PeopleNotProfit | #NoMoreEmptyPromises | #UprootTheSystem </td>
-   <td style="text-align:left;"> 0, 23, https://t.co/0V5VnFSl7c, https://fridaysforfuture.org/March25, fridaysforfuture.org/March25 </td>
-   <td style="text-align:left;"> Fridays For Future </td>
-   <td style="text-align:left;"> Earth </td>
-   <td style="text-align:left;"> FALSE </td>
-   <td style="text-align:left;"> 1485945547190149122 </td>
-   <td style="text-align:left;"> 95226101 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 91438333 </td>
-   <td style="text-align:left;"> https://t.co/OzJCUzIGV5 </td>
-   <td style="text-align:left;"> 2009-11-20T22:18:03.000Z </td>
-   <td style="text-align:left;"> https://pbs.twimg.com/profile_images/430069942289846272/IOc26CaL_normal.jpeg </td>
-   <td style="text-align:left;"> 10325 </td>
-   <td style="text-align:left;"> FALSE </td>
-   <td style="text-align:left;"> elotroalex </td>
-   <td style="text-align:left;"> digital scholarship Librarian, materialist spelunker and otrAmerican. he/him/colibri. opinions my own. </td>
-   <td style="text-align:left;"> 0, 23, https://t.co/OzJCUzIGV5, http://www.elotroalex.com, elotroalex.com </td>
-   <td style="text-align:left;"> Dr. Alex Gil 🏳️ </td>
-   <td style="text-align:left;"> New York, NY </td>
-   <td style="text-align:left;"> FALSE </td>
-   <td style="text-align:left;"> 1487145774316146691 </td>
-   <td style="text-align:left;"> 95226101 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 712279006608023554 </td>
-   <td style="text-align:left;"> https://t.co/aUsRJt5jwu </td>
-   <td style="text-align:left;"> 2016-03-22T14:05:23.000Z </td>
-   <td style="text-align:left;"> https://pbs.twimg.com/profile_images/1478749928751087617/E-8cInsF_normal.jpg </td>
-   <td style="text-align:left;"> 3231 </td>
-   <td style="text-align:left;"> FALSE </td>
-   <td style="text-align:left;"> JonathanMijs </td>
-   <td style="text-align:left;"> Sociologist @BU_Tweets @ErasmusUni • writing book on #meritocracy @UCPress • funded by Veni &amp; Marie Curie • formerly @Harvard @LSEinequalities @UvA_Amsterdam </td>
-   <td style="text-align:left;"> 0, 23, https://t.co/aUsRJt5jwu, http://www.jonathanmijs.com/, jonathanmijs.com </td>
-   <td style="text-align:left;"> Jonathan Mijs 🇺🇦🕊 </td>
-   <td style="text-align:left;"> 🇺🇸🇳🇱 </td>
-   <td style="text-align:left;"> FALSE </td>
-   <td style="text-align:left;"> 1511316580092755976 </td>
-   <td style="text-align:left;"> 95226101 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 205250647 </td>
-   <td style="text-align:left;">  </td>
-   <td style="text-align:left;"> 2010-10-20T13:08:55.000Z </td>
-   <td style="text-align:left;"> https://pbs.twimg.com/profile_images/1487864781516247041/TRkgt-Ei_normal.jpg </td>
-   <td style="text-align:left;"> 241 </td>
-   <td style="text-align:left;"> FALSE </td>
-   <td style="text-align:left;"> yiqqqing </td>
-   <td style="text-align:left;"> PhD student in Cornell Tech🧐
-https://t.co/HjA05DDg3i
-https://t.co/fOXBhI6wrV… </td>
-   <td style="text-align:left;"> NULL </td>
-   <td style="text-align:left;"> Yiqing </td>
-   <td style="text-align:left;"> NA </td>
-   <td style="text-align:left;"> FALSE </td>
-   <td style="text-align:left;"> NA </td>
-   <td style="text-align:left;"> 95226101 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 3299359349 </td>
-   <td style="text-align:left;"> https://t.co/5Eo9CRTChq </td>
-   <td style="text-align:left;"> 2015-05-26T14:56:19.000Z </td>
-   <td style="text-align:left;"> https://pbs.twimg.com/profile_images/1296998688456413184/73r_7cAe_normal.jpg </td>
-   <td style="text-align:left;"> 3817 </td>
-   <td style="text-align:left;"> FALSE </td>
-   <td style="text-align:left;"> frye_maggie </td>
-   <td style="text-align:left;"> Associate Professor of Sociology at University of Michigan </td>
-   <td style="text-align:left;"> 0, 23, https://t.co/5Eo9CRTChq, https://lsa.umich.edu/soc/people/faculty/margaret-frye.html, lsa.umich.edu/soc/people/fac… </td>
-   <td style="text-align:left;"> Maggie Frye </td>
-   <td style="text-align:left;"> Ann Arbor, MI </td>
-   <td style="text-align:left;"> FALSE </td>
-   <td style="text-align:left;"> 1396848890943610884 </td>
-   <td style="text-align:left;"> 95226101 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 1060577549384851457 </td>
-   <td style="text-align:left;"> https://t.co/YY1teHggGi </td>
-   <td style="text-align:left;"> 2018-11-08T16:59:27.000Z </td>
-   <td style="text-align:left;"> https://pbs.twimg.com/profile_images/1277890570262888448/RZTMxU4u_normal.jpg </td>
-   <td style="text-align:left;"> 9281 </td>
-   <td style="text-align:left;"> TRUE </td>
-   <td style="text-align:left;"> CDEIUK </td>
-   <td style="text-align:left;"> Enabling trustworthy innovation to thrive in the UK. 
-Read our blog here: https://t.co/7n4b023nyR </td>
-   <td style="text-align:left;"> 0, 23, https://t.co/YY1teHggGi, http://www.gov.uk/cdei, gov.uk/cdei </td>
-   <td style="text-align:left;"> Centre for Data Ethics &amp; Innovation </td>
-   <td style="text-align:left;"> United Kingdom </td>
-   <td style="text-align:left;"> FALSE </td>
-   <td style="text-align:left;"> NA </td>
-   <td style="text-align:left;"> 95226101 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 373372752 </td>
-   <td style="text-align:left;">  </td>
-   <td style="text-align:left;"> 2011-09-14T13:26:49.000Z </td>
-   <td style="text-align:left;"> https://pbs.twimg.com/profile_images/613021460043550720/1F_1cERr_normal.jpg </td>
-   <td style="text-align:left;"> 580 </td>
-   <td style="text-align:left;"> FALSE </td>
-   <td style="text-align:left;"> aksoyundan </td>
-   <td style="text-align:left;"> Associate Professor, Sociologist at University College London. PhD Uni Utrecht, BA Bogazici Uni | (Natural) Experimental Methods, Stats, Politics and Religion </td>
-   <td style="text-align:left;"> NULL </td>
-   <td style="text-align:left;"> Ozan Aksoy </td>
+   <td style="text-align:left;"> ResearchProfes </td>
+   <td style="text-align:left;"> Provides a database of funding opportunities, news (@ResFortnight @ResearchEurope @Funding_Insight  @HE_Analyst) &amp; insight to researchers
+Part of @exlibrisgroup </td>
+   <td style="text-align:left;"> 0, 22, http://t.co/dcXO3BFFKi, http://www.researchprofessional.com, researchprofessional.com </td>
+   <td style="text-align:left;"> ResearchProfessional </td>
    <td style="text-align:left;"> London, England </td>
    <td style="text-align:left;"> FALSE </td>
-   <td style="text-align:left;"> NA </td>
+   <td style="text-align:left;"> 1260177908083109888 </td>
    <td style="text-align:left;"> 95226101 </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> 1823987821 </td>
-   <td style="text-align:left;"> https://t.co/CJ1pS97HYc </td>
-   <td style="text-align:left;"> 2013-09-08T09:54:48.000Z </td>
-   <td style="text-align:left;"> https://pbs.twimg.com/profile_images/699501890866794497/SOjcv46W_normal.png </td>
-   <td style="text-align:left;"> 4263 </td>
+   <td style="text-align:left;"> 2777000013 </td>
+   <td style="text-align:left;"> https://t.co/x9nsgWxDpd </td>
+   <td style="text-align:left;"> 2014-09-19T20:33:18.000Z </td>
+   <td style="text-align:left;"> https://pbs.twimg.com/profile_images/1309528585703747585/C-rQRr3W_normal.jpg </td>
+   <td style="text-align:left;"> 12252 </td>
    <td style="text-align:left;"> FALSE </td>
-   <td style="text-align:left;"> nj_tierney </td>
-   <td style="text-align:left;"> || Research Software Engineer at Telethon Kids Institute | Loves #rstats | Rock Climber | Hiker | Runner | Coffee Geek | Serial Hobbiest | he/him || </td>
-   <td style="text-align:left;"> 0, 23, https://t.co/CJ1pS97HYc, https://www.njtierney.com/, njtierney.com </td>
-   <td style="text-align:left;"> Nicholas Tierney </td>
-   <td style="text-align:left;"> Walyalup (Fremantle), WA </td>
-   <td style="text-align:left;"> FALSE </td>
-   <td style="text-align:left;"> 1440562571447193608 </td>
-   <td style="text-align:left;"> 95226101 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 421160402 </td>
-   <td style="text-align:left;">  </td>
-   <td style="text-align:left;"> 2011-11-25T15:45:34.000Z </td>
-   <td style="text-align:left;"> https://pbs.twimg.com/profile_images/1495114602740437001/W_YSHNNq_normal.jpg </td>
-   <td style="text-align:left;"> 12898 </td>
-   <td style="text-align:left;"> FALSE </td>
-   <td style="text-align:left;"> JoPhoenix1 </td>
-   <td style="text-align:left;"> Criminology Prof interested in young people, women, sex, gender &amp; justice, professional ethics. Views my own. Likes, RT not nec endorsements &amp; never were. </td>
-   <td style="text-align:left;"> NULL </td>
-   <td style="text-align:left;"> Jo Phoenix </td>
-   <td style="text-align:left;"> Somewhere in England </td>
-   <td style="text-align:left;"> FALSE </td>
-   <td style="text-align:left;"> 1469681082983337989 </td>
-   <td style="text-align:left;"> 95226101 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 518115959 </td>
-   <td style="text-align:left;"> https://t.co/HCTWZUEhZg </td>
-   <td style="text-align:left;"> 2012-03-08T02:07:58.000Z </td>
-   <td style="text-align:left;"> https://pbs.twimg.com/profile_images/836919572385173504/OydnR95z_normal.jpg </td>
-   <td style="text-align:left;"> 1130 </td>
-   <td style="text-align:left;"> FALSE </td>
-   <td style="text-align:left;"> LeahRosenzweig </td>
-   <td style="text-align:left;"> Director at Development Innovation Lab (@DIL_UChi) @Uchicago. Research Affiliate @mitgovlab + @BusaraCenter. PhD @MIT. </td>
-   <td style="text-align:left;"> 0, 23, https://t.co/HCTWZUEhZg, http://www.leahrrosenzweig.com, leahrrosenzweig.com </td>
-   <td style="text-align:left;"> Leah Rosenzweig </td>
+   <td style="text-align:left;"> funnylad5 </td>
+   <td style="text-align:left;"> Ladhood, Pls Like, Sheeps. (he/him) PLEASE buy my book: https://t.co/5pcyN0h8N6… </td>
+   <td style="text-align:left;"> 0, 23, https://t.co/x9nsgWxDpd, http://liamwilliams.uk, liamwilliams.uk </td>
+   <td style="text-align:left;"> Liam Williams </td>
    <td style="text-align:left;"> NA </td>
    <td style="text-align:left;"> FALSE </td>
-   <td style="text-align:left;"> 1466460442658840582 </td>
+   <td style="text-align:left;"> 1400417623347712002 </td>
    <td style="text-align:left;"> 95226101 </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> 2835428081 </td>
-   <td style="text-align:left;"> https://t.co/E69ongP0jR </td>
-   <td style="text-align:left;"> 2014-10-17T19:41:54.000Z </td>
-   <td style="text-align:left;"> https://pbs.twimg.com/profile_images/1413627927057485825/y6Dyg2_d_normal.jpg </td>
-   <td style="text-align:left;"> 1970 </td>
+   <td style="text-align:left;"> 281440041 </td>
+   <td style="text-align:left;"> https://t.co/4QrjaFCVui </td>
+   <td style="text-align:left;"> 2011-04-13T09:00:23.000Z </td>
+   <td style="text-align:left;"> https://pbs.twimg.com/profile_images/1390702571812184064/v6s0uN5n_normal.jpg </td>
+   <td style="text-align:left;"> 31273 </td>
    <td style="text-align:left;"> FALSE </td>
-   <td style="text-align:left;"> LauraK_Nelson </td>
-   <td style="text-align:left;"> scholar of social movements and culture, computational sociologist, open source enthusiast, assistant professor </td>
-   <td style="text-align:left;"> 0, 23, https://t.co/E69ongP0jR, http://www.lauraknelson.com, lauraknelson.com </td>
-   <td style="text-align:left;"> Laura Nelson </td>
-   <td style="text-align:left;"> University of British Columbia </td>
-   <td style="text-align:left;"> FALSE </td>
-   <td style="text-align:left;"> 1407068485197328384 </td>
-   <td style="text-align:left;"> 95226101 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 772741399750008832 </td>
-   <td style="text-align:left;"> https://t.co/1WZstjoavU </td>
-   <td style="text-align:left;"> 2016-09-05T10:21:21.000Z </td>
-   <td style="text-align:left;"> https://pbs.twimg.com/profile_images/1214853567363919872/P3qOuBow_normal.jpg </td>
-   <td style="text-align:left;"> 4229 </td>
-   <td style="text-align:left;"> FALSE </td>
-   <td style="text-align:left;"> jacob_nyrup </td>
-   <td style="text-align:left;"> I (try to) conduct research to advance knowledge on dictators, Danish municipalities, and 💵🏠 at @UniOslo. DPhil from @NuffieldCollege, University of Oxford. </td>
-   <td style="text-align:left;"> 0, 23, https://t.co/1WZstjoavU, http://www.jacobnyrup.dk, jacobnyrup.dk </td>
-   <td style="text-align:left;"> 𝙅𝙖𝙘🍩𝙗 𝙉𝙮𝙧𝙪𝙥 </td>
-   <td style="text-align:left;"> Oslo, Norway. </td>
-   <td style="text-align:left;"> FALSE </td>
-   <td style="text-align:left;"> 1513271616725262347 </td>
-   <td style="text-align:left;"> 95226101 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 360290909 </td>
-   <td style="text-align:left;"> https://t.co/8jJwqUOwRk </td>
-   <td style="text-align:left;"> 2011-08-23T00:14:34.000Z </td>
-   <td style="text-align:left;"> https://pbs.twimg.com/profile_images/1218068748634066947/lXTkRrLa_normal.jpg </td>
-   <td style="text-align:left;"> 459 </td>
-   <td style="text-align:left;"> FALSE </td>
-   <td style="text-align:left;"> zyrocom </td>
-   <td style="text-align:left;"> Build a website, blog or an online store with Zyro.
+   <td style="text-align:left;"> _alice_evans </td>
+   <td style="text-align:left;"> 📚 THE GREAT GENDER DIVERGENCE
 
-🚀 Extremely easy to use
-🚀 AI-powered tools
-🚀 Designer-made templates
-🚀 24/7 support </td>
-   <td style="text-align:left;"> 0, 23, https://t.co/8jJwqUOwRk, https://zyro.tech/34zem2z, zyro.tech/34zem2z </td>
-   <td style="text-align:left;"> Zyro </td>
+⚖ Why have all societies become more gender equal?
+
+🌏 Why are some more gender equal than others?
+
+💼 @KingsCollegeLon @Harvard </td>
+   <td style="text-align:left;"> 0, 23, https://t.co/4QrjaFCVui, http://www.draliceevans.com, draliceevans.com </td>
+   <td style="text-align:left;"> Alice Evans </td>
+   <td style="text-align:left;"> Podcast: “ROCKING OUR PRIORS” </td>
+   <td style="text-align:left;"> FALSE </td>
+   <td style="text-align:left;"> 1467170791930449931 </td>
+   <td style="text-align:left;"> 95226101 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 76970560 </td>
+   <td style="text-align:left;"> https://t.co/Z9EExQKt3M </td>
+   <td style="text-align:left;"> 2009-09-24T15:49:49.000Z </td>
+   <td style="text-align:left;"> https://pbs.twimg.com/profile_images/1280821897253486593/brwCk9nw_normal.jpg </td>
+   <td style="text-align:left;"> 175580 </td>
+   <td style="text-align:left;"> FALSE </td>
+   <td style="text-align:left;"> WisdenCricket </td>
+   <td style="text-align:left;"> The independent voice of cricket. For more from Wisden check out @WisdenAlmanack and @WisdenIndia. </td>
+   <td style="text-align:left;"> 0, 23, https://t.co/Z9EExQKt3M, http://wisden.com, wisden.com </td>
+   <td style="text-align:left;"> Wisden </td>
+   <td style="text-align:left;"> The Oval, London </td>
+   <td style="text-align:left;"> FALSE </td>
+   <td style="text-align:left;"> 1508514302478663685 </td>
+   <td style="text-align:left;"> 95226101 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 134174402 </td>
+   <td style="text-align:left;">  </td>
+   <td style="text-align:left;"> 2010-04-17T17:09:10.000Z </td>
+   <td style="text-align:left;"> https://pbs.twimg.com/profile_images/1268527041458118656/5DQvd6HC_normal.jpg </td>
+   <td style="text-align:left;"> 1471 </td>
+   <td style="text-align:left;"> FALSE </td>
+   <td style="text-align:left;"> Ew_Luger </td>
+   <td style="text-align:left;"> Director of Research Innovation @eca_edinburgh; Deputy Director of Research @UoE_EFI; Fellow @turinginst; Into HDI, Policy &amp; Ethics (views own, obv) </td>
+   <td style="text-align:left;"> NULL </td>
+   <td style="text-align:left;"> Dr. Ewa Luger </td>
+   <td style="text-align:left;"> Edinburgh, Scotland </td>
+   <td style="text-align:left;"> FALSE </td>
+   <td style="text-align:left;"> 1493614270201872385 </td>
+   <td style="text-align:left;"> 95226101 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 1961901686 </td>
+   <td style="text-align:left;">  </td>
+   <td style="text-align:left;"> 2013-10-15T04:37:29.000Z </td>
+   <td style="text-align:left;"> https://pbs.twimg.com/profile_images/378800000598885799/97638c2cb18b2471207e15471c7adc8d_normal.jpeg </td>
+   <td style="text-align:left;"> 3075 </td>
+   <td style="text-align:left;"> FALSE </td>
+   <td style="text-align:left;"> ECSR_Soc </td>
+   <td style="text-align:left;"> European Consortium for Sociological Research. Conferences, summer schools, and the European Sociological Review https://t.co/pRHBNIJmm1 </td>
+   <td style="text-align:left;"> NULL </td>
+   <td style="text-align:left;"> ECSR Sociology </td>
    <td style="text-align:left;"> NA </td>
+   <td style="text-align:left;"> FALSE </td>
+   <td style="text-align:left;"> NA </td>
+   <td style="text-align:left;"> 95226101 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 634782060 </td>
+   <td style="text-align:left;"> https://t.co/VTi07uBQPx </td>
+   <td style="text-align:left;"> 2012-07-13T16:44:46.000Z </td>
+   <td style="text-align:left;"> https://pbs.twimg.com/profile_images/987824505010634753/lNAot9ww_normal.jpg </td>
+   <td style="text-align:left;"> 4271 </td>
+   <td style="text-align:left;"> FALSE </td>
+   <td style="text-align:left;"> heshan_cheri </td>
+   <td style="text-align:left;"> Coder, Data artist, Architect at large. Director of Engineering @Foursquare, Co-Founder of @Unfoldedinc, Creator of #kepergl, Ex-@Uber DataViz </td>
+   <td style="text-align:left;"> 0, 23, https://t.co/VTi07uBQPx, http://unfolded.ai, unfolded.ai </td>
+   <td style="text-align:left;"> Shan He </td>
+   <td style="text-align:left;"> San Francisco </td>
+   <td style="text-align:left;"> FALSE </td>
+   <td style="text-align:left;"> 1349438469995601922 </td>
+   <td style="text-align:left;"> 95226101 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 774568999 </td>
+   <td style="text-align:left;"> https://t.co/sRpEAaKdl3 </td>
+   <td style="text-align:left;"> 2012-08-22T21:50:35.000Z </td>
+   <td style="text-align:left;"> https://pbs.twimg.com/profile_images/1453111572759465990/T4h4HHIZ_normal.jpg </td>
+   <td style="text-align:left;"> 378 </td>
+   <td style="text-align:left;"> FALSE </td>
+   <td style="text-align:left;"> DiegoMartin979 </td>
+   <td style="text-align:left;">  </td>
+   <td style="text-align:left;"> 0, 23, https://t.co/sRpEAaKdl3, https://sites.google.com/view/diegoamartin/home, sites.google.com/view/diegoamar… </td>
+   <td style="text-align:left;"> Diego Martin </td>
+   <td style="text-align:left;"> NA </td>
+   <td style="text-align:left;"> FALSE </td>
+   <td style="text-align:left;"> NA </td>
+   <td style="text-align:left;"> 95226101 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 253791979 </td>
+   <td style="text-align:left;"> https://t.co/P8bW0X8ciW </td>
+   <td style="text-align:left;"> 2011-02-17T23:58:19.000Z </td>
+   <td style="text-align:left;"> https://pbs.twimg.com/profile_images/507322253776650240/TyAxiMi6_normal.jpeg </td>
+   <td style="text-align:left;"> 5366 </td>
+   <td style="text-align:left;"> FALSE </td>
+   <td style="text-align:left;"> daattali </td>
+   <td style="text-align:left;"> Founder &amp; Lead R-Shiny Consultant @ AttaliTech Ltd.
+
+#rstats blogger, tool builder, extreme traveller. MSc in Bioinformatics, Bachelor of Computer Science. </td>
+   <td style="text-align:left;"> 0, 23, https://t.co/P8bW0X8ciW, https://AttaliTech.com, AttaliTech.com </td>
+   <td style="text-align:left;"> Dean Attali </td>
+   <td style="text-align:left;"> Toronto </td>
+   <td style="text-align:left;"> FALSE </td>
+   <td style="text-align:left;"> 969595742657511424 </td>
+   <td style="text-align:left;"> 95226101 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 3029938271 </td>
+   <td style="text-align:left;"> https://t.co/71mKBmqsuo </td>
+   <td style="text-align:left;"> 2015-02-11T09:38:48.000Z </td>
+   <td style="text-align:left;"> https://pbs.twimg.com/profile_images/1109143993588289536/EZk66Mb-_normal.png </td>
+   <td style="text-align:left;"> 941 </td>
+   <td style="text-align:left;"> FALSE </td>
+   <td style="text-align:left;"> AvitalLivny </td>
+   <td style="text-align:left;"> Asst Professor @IllinoisPolSci @Illinois_Alma (she/her/hers)
+Turkey &amp; MENA; ethnicity &amp; religion; measurement
+"Trust &amp; the Islamic Advantage" (CUP) now out! </td>
+   <td style="text-align:left;"> 0, 23, https://t.co/71mKBmqsuo, http://www.alivny.com, alivny.com </td>
+   <td style="text-align:left;"> Avital Livny </td>
+   <td style="text-align:left;"> Urbana, IL </td>
+   <td style="text-align:left;"> FALSE </td>
+   <td style="text-align:left;"> 1435613559518543874 </td>
+   <td style="text-align:left;"> 95226101 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 988588884 </td>
+   <td style="text-align:left;"> https://t.co/W4XSwsC9bb </td>
+   <td style="text-align:left;"> 2012-12-04T11:37:54.000Z </td>
+   <td style="text-align:left;"> https://pbs.twimg.com/profile_images/3785200321/e37c72b211bbd05524acf45316c84f85_normal.jpeg </td>
+   <td style="text-align:left;"> 4087 </td>
+   <td style="text-align:left;"> FALSE </td>
+   <td style="text-align:left;"> McEwen_Nicola </td>
+   <td style="text-align:left;"> Prof of Territorial Politics @EdinburghUni, @CCC_Research @Edinburgh_PIR. Senior Fellow @ukandeu. Retweets etc probably just my way of finding stuff later </td>
+   <td style="text-align:left;"> 0, 23, https://t.co/W4XSwsC9bb, http://centreonconstitutionalchange.ac.uk, centreonconstitutionalchange.ac.uk </td>
+   <td style="text-align:left;"> Nicola McEwen </td>
+   <td style="text-align:left;"> Edinburgh and Falkirk </td>
+   <td style="text-align:left;"> FALSE </td>
+   <td style="text-align:left;"> NA </td>
+   <td style="text-align:left;"> 95226101 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 2592605892 </td>
+   <td style="text-align:left;">  </td>
+   <td style="text-align:left;"> 2014-06-28T06:46:12.000Z </td>
+   <td style="text-align:left;"> https://pbs.twimg.com/profile_images/1509512361899696131/xtzjFVzI_normal.jpg </td>
+   <td style="text-align:left;"> 1525 </td>
+   <td style="text-align:left;"> FALSE </td>
+   <td style="text-align:left;"> AndiHaxhiu1 </td>
+   <td style="text-align:left;"> PhD candidate and Tutor at @EdinburghUni. Research focus on the Museum’s role in divided societies. </td>
+   <td style="text-align:left;"> NULL </td>
+   <td style="text-align:left;"> Andi Haxhiu 🏀⚽️📚🇽🇰🏴󠁧󠁢󠁳󠁣󠁴󠁿 </td>
+   <td style="text-align:left;"> Edinburgh, Scotland </td>
+   <td style="text-align:left;"> FALSE </td>
+   <td style="text-align:left;"> 1507142652579528707 </td>
+   <td style="text-align:left;"> 95226101 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 132039766 </td>
+   <td style="text-align:left;">  </td>
+   <td style="text-align:left;"> 2010-04-12T03:23:46.000Z </td>
+   <td style="text-align:left;"> https://pbs.twimg.com/profile_images/3741515492/520509a30f638362be75ef1e884c9d99_normal.jpeg </td>
+   <td style="text-align:left;"> 390 </td>
+   <td style="text-align:left;"> FALSE </td>
+   <td style="text-align:left;"> meganicka </td>
+   <td style="text-align:left;"> UX Researcher | Passionate about tech and human rights, data security and privacy </td>
+   <td style="text-align:left;"> NULL </td>
+   <td style="text-align:left;"> Megan Metzger </td>
+   <td style="text-align:left;"> Palo Alto, CA </td>
+   <td style="text-align:left;"> FALSE </td>
+   <td style="text-align:left;"> NA </td>
+   <td style="text-align:left;"> 95226101 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 606433108 </td>
+   <td style="text-align:left;"> https://t.co/6TD3gfChZC </td>
+   <td style="text-align:left;"> 2012-06-12T16:08:06.000Z </td>
+   <td style="text-align:left;"> https://pbs.twimg.com/profile_images/1249385075298500616/5Ph1f1HZ_normal.jpg </td>
+   <td style="text-align:left;"> 774 </td>
+   <td style="text-align:left;"> FALSE </td>
+   <td style="text-align:left;"> ChantalBerman </td>
+   <td style="text-align:left;"> I write about protest, mining, political economy, and state violence in SWANA. Asst. Prof @GUGovt, fellow @HarvardWCFIA. 🇫🇷/🇺🇸. She/her. Rare tweets. </td>
+   <td style="text-align:left;"> 0, 23, https://t.co/6TD3gfChZC, http://www.chantalberman.com/, chantalberman.com </td>
+   <td style="text-align:left;"> Dr. Chantal </td>
+   <td style="text-align:left;"> Washington DC </td>
+   <td style="text-align:left;"> FALSE </td>
+   <td style="text-align:left;"> NA </td>
+   <td style="text-align:left;"> 95226101 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 274991683 </td>
+   <td style="text-align:left;">  </td>
+   <td style="text-align:left;"> 2011-03-31T12:29:00.000Z </td>
+   <td style="text-align:left;"> https://pbs.twimg.com/profile_images/1478359914301038592/vnFus_WU_normal.jpg </td>
+   <td style="text-align:left;"> 76524 </td>
+   <td style="text-align:left;"> FALSE </td>
+   <td style="text-align:left;"> josephfcox </td>
+   <td style="text-align:left;"> journalist on hackers/crime/privacy for motherboard. Signal: +44 20 8133 5190. Wickr: josephcox. Email: joseph.cox@vice.com </td>
+   <td style="text-align:left;"> NULL </td>
+   <td style="text-align:left;"> Joseph Cox </td>
+   <td style="text-align:left;"> NA </td>
+   <td style="text-align:left;"> FALSE </td>
+   <td style="text-align:left;"> 1319270206347173888 </td>
+   <td style="text-align:left;"> 95226101 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 585482512 </td>
+   <td style="text-align:left;"> https://t.co/28Rc5hhGfI </td>
+   <td style="text-align:left;"> 2012-05-20T08:21:29.000Z </td>
+   <td style="text-align:left;"> https://pbs.twimg.com/profile_images/1221578584827015168/Hkyy8pna_normal.jpg </td>
+   <td style="text-align:left;"> 25331 </td>
+   <td style="text-align:left;"> FALSE </td>
+   <td style="text-align:left;"> RivkahBrown </td>
+   <td style="text-align:left;"> Commissioning Editor &amp; Reporter @novaramedia // Editor @_VashtiMedia // </td>
+   <td style="text-align:left;"> 0, 23, https://t.co/28Rc5hhGfI, http://rivkahbrown.com/, rivkahbrown.com </td>
+   <td style="text-align:left;"> Rivkah Brown </td>
+   <td style="text-align:left;"> rivkah@novaramedia.com </td>
+   <td style="text-align:left;"> FALSE </td>
+   <td style="text-align:left;"> NA </td>
+   <td style="text-align:left;"> 95226101 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 2359610046 </td>
+   <td style="text-align:left;"> https://t.co/PFP2VaZgx1 </td>
+   <td style="text-align:left;"> 2014-02-24T14:48:35.000Z </td>
+   <td style="text-align:left;"> https://pbs.twimg.com/profile_images/1225726255238172672/tC1cdGsu_normal.jpg </td>
+   <td style="text-align:left;"> 897 </td>
+   <td style="text-align:left;"> FALSE </td>
+   <td style="text-align:left;"> ArunFrey </td>
+   <td style="text-align:left;"> Postdoc @OxfordDemSci @NuffieldCollege researching migration, conflict, and inequality. Causal inference and computational social science | Here for the tl;drs. </td>
+   <td style="text-align:left;"> 0, 23, https://t.co/PFP2VaZgx1, https://arunfrey.github.io, arunfrey.github.io </td>
+   <td style="text-align:left;"> Arun Frey </td>
+   <td style="text-align:left;"> Oxford, England </td>
+   <td style="text-align:left;"> FALSE </td>
+   <td style="text-align:left;"> 1504742742592827394 </td>
+   <td style="text-align:left;"> 95226101 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 3096613518 </td>
+   <td style="text-align:left;">  </td>
+   <td style="text-align:left;"> 2015-03-18T19:15:38.000Z </td>
+   <td style="text-align:left;"> https://pbs.twimg.com/profile_images/1435628618504355848/0ZJZPq2N_normal.jpg </td>
+   <td style="text-align:left;"> 2631 </td>
+   <td style="text-align:left;"> FALSE </td>
+   <td style="text-align:left;"> PKellstedt </td>
+   <td style="text-align:left;"> Professor of Political Science @TAMU; Editor in Chief of @PSRMJournal. Views are my own. </td>
+   <td style="text-align:left;"> NULL </td>
+   <td style="text-align:left;"> Paul Kellstedt </td>
+   <td style="text-align:left;"> College Station, TX </td>
+   <td style="text-align:left;"> FALSE </td>
+   <td style="text-align:left;"> NA </td>
+   <td style="text-align:left;"> 95226101 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 3252834682 </td>
+   <td style="text-align:left;"> https://t.co/M4daUI190f </td>
+   <td style="text-align:left;"> 2015-05-13T21:56:27.000Z </td>
+   <td style="text-align:left;"> https://pbs.twimg.com/profile_images/1385176789153161219/GqY0v3IX_normal.jpg </td>
+   <td style="text-align:left;"> 520 </td>
+   <td style="text-align:left;"> FALSE </td>
+   <td style="text-align:left;"> MatthiasDilling </td>
+   <td style="text-align:left;"> Politics faculty @PCS_Swansea &amp; associate member @Politics_Oxford. PhD @NuffieldCollege. Tweeting on German and European politics and political parties </td>
+   <td style="text-align:left;"> 0, 23, https://t.co/M4daUI190f, https://matthiasdilling.com/, matthiasdilling.com </td>
+   <td style="text-align:left;"> Matthias Dilling </td>
+   <td style="text-align:left;"> NA </td>
+   <td style="text-align:left;"> FALSE </td>
+   <td style="text-align:left;"> NA </td>
+   <td style="text-align:left;"> 95226101 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 2905142649 </td>
+   <td style="text-align:left;"> https://t.co/7mHXdwyffc </td>
+   <td style="text-align:left;"> 2014-12-04T15:11:31.000Z </td>
+   <td style="text-align:left;"> https://pbs.twimg.com/profile_images/1460178909811589121/LURc_CTg_normal.jpg </td>
+   <td style="text-align:left;"> 12115 </td>
+   <td style="text-align:left;"> FALSE </td>
+   <td style="text-align:left;"> FawazGerges </td>
+   <td style="text-align:left;"> Professor of International Relations at the London School of Economics. @LSEIRDept </td>
+   <td style="text-align:left;"> 0, 23, https://t.co/7mHXdwyffc, http://fgerges.net/, fgerges.net </td>
+   <td style="text-align:left;"> Fawaz Gerges </td>
+   <td style="text-align:left;"> London, UK </td>
    <td style="text-align:left;"> FALSE </td>
    <td style="text-align:left;"> NA </td>
    <td style="text-align:left;"> 95226101 </td>
