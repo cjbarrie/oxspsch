@@ -13,6 +13,36 @@ editor: visual
     -   Get user demographics
     -   Linked survey designs
 
+## Introduction
+
+-   Before that: getting data outside the API
+    -   Datasets shared online, e.g.,:
+
+        -   [Harvard Dataverse](https://dataverse.harvard.edu/dataset.xhtml?persistentId=doi:10.7910/DVN/2FIFLH)
+
+        -   <https://catalog.docnow.io/>
+
+        -   [Zenodo](https://zenodo.org/record/4540820#.YmJTYcaEaLc)
+        
+## Hydrating
+
+```{r, eval = T, echo = T}
+tweet_IDs <- readRDS("data/wm_IDs_samp.rds")
+head(tweet_IDs)
+```
+
+```{r, eval = F, echo = T}
+library(academictwitteR)
+
+hydrated_tweets <- hydrate_tweets(tweet_IDs)
+```
+
+## Hydrating
+
+Alternatively:
+
+Use the [hydrator](https://github.com/DocNow/hydrator#readme) tool from DocTheNow
+
 ## Getting tweeters
 
 ```{r, eval = T, echo = T}
@@ -30,32 +60,60 @@ cjb_ID
 ## Getting whom I follow (friends)
 
 ::: panel-tabset
-
-### User data
-
-```{r, eval = T, echo = F}
-userfwing <- readRDS("data/cjbfwing.rds")
-
-userfwingsamp <- userfwing %>%
-  sample_n(20)
-kableExtra::kable(userfwingsamp)
-```
-
 ### IDs
 
 ```{r, eval = F, echo = T}
-
 userfwing <- get_user_following(cjb_ID)
 
 ids <- userfwing$id
 
 head(ids)
 ```
+
 ```{r, eval = T, echo = F}
+userfwing <- readRDS("data/cjbfwing.rds")
 ids <- userfwing$id
 head(ids)
 ```
+
+### User data
+
+```{r, eval = T, echo = F}
+userfwingsamp <- userfwing %>%
+  sample_n(20)
+kableExtra::kable(userfwingsamp)
+```
 :::
+
+## User-level inference
+
+Example from [here](https://github.com/euagendas/m3inference)
+
+```{python, eval = F, echo = T}
+
+from m3inference import M3Inference
+import pprint
+m3 = M3Inference() # see docstring for details
+pred = m3.infer('./test/data_resized.jsonl') # also see docstring for details
+pprint.pprint(pred)
+```
+
+    OrderedDict([('720389270335135745',
+                  {'age': {'19-29': 0.1546,
+                           '30-39': 0.114,
+                           '<=18': 0.0481,
+                           '>=40': 0.6833},
+                   'gender': {'female': 0.0066, 'male': 0.9934},
+                   'org': {'is-org': 0.7508, 'non-org': 0.2492}}),
+                 ('21447363',
+                  {'age': {'19-29': 0.0157,
+                           '30-39': 0.9837,
+                           '<=18': 0.0004,
+                           '>=40': 0.0002},
+                   'gender': {'female': 0.9866, 'male': 0.0134},
+                   'org': {'is-org': 0.0002, 'non-org': 0.9998}}),
+        ...
+      ...
 
 ## User-level inference
 
@@ -65,6 +123,7 @@ library(tweetscores)
 ```
 
 ## User-level inference
+
 ```{r, eval=F, echo = T}
 results <- estimateIdeology("cbarrie", ids)
 plot(results)
@@ -84,4 +143,3 @@ userfwing %>%
   summarise(count = n()) %>%
   top_n(count)
 ```
-

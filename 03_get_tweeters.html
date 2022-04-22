@@ -400,17 +400,52 @@
 </ul></li>
 </ul>
 </section>
+<section id="introduction-1" class="slide level2">
+<h2>Introduction</h2>
+<ul>
+<li>Before that: getting data outside the API
+<ul>
+<li><p>Datasets shared online, e.g.,:</p>
+<ul>
+<li><p><a href="https://dataverse.harvard.edu/dataset.xhtml?persistentId=doi:10.7910/DVN/2FIFLH">Harvard Dataverse</a></p></li>
+<li><p><a href="https://catalog.docnow.io/" class="uri">https://catalog.docnow.io/</a></p></li>
+<li><p><a href="https://zenodo.org/record/4540820#.YmJTYcaEaLc">Zenodo</a></p></li>
+</ul></li>
+</ul></li>
+</ul>
+</section>
+<section id="hydrating" class="slide level2">
+<h2>Hydrating</h2>
+<div class="cell">
+<div class="sourceCode" id="cb1"><pre class="sourceCode numberSource r cell-code number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a>tweet_IDs <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(<span class="st">"data/wm_IDs_samp.rds"</span>)</span>
+<span id="cb1-2"><a href="#cb1-2"></a><span class="fu">head</span>(tweet_IDs)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-stdout">
+<pre><code>[1] "823360655835168640" "822727580923154432" "822953780127862784"
+[4] "823136522199253120" "821584199949942784" "822868286979342208"</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode" id="cb3"><pre class="sourceCode numberSource r cell-code number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a><span class="fu">library</span>(academictwitteR)</span>
+<span id="cb3-2"><a href="#cb3-2"></a></span>
+<span id="cb3-3"><a href="#cb3-3"></a>hydrated_tweets <span class="ot">&lt;-</span> <span class="fu">hydrate_tweets</span>(tweet_IDs)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="hydrating-1" class="slide level2">
+<h2>Hydrating</h2>
+<p>Alternatively:</p>
+<p>Use the <a href="https://github.com/DocNow/hydrator#readme">hydrator</a> tool from DocTheNow</p>
+</section>
 <section id="getting-tweeters" class="slide level2">
 <h2>Getting tweeters</h2>
 <div class="cell">
-<div class="sourceCode" id="cb1"><pre class="sourceCode numberSource r cell-code number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="fu">library</span>(academictwitteR)</span>
-<span id="cb1-2"><a href="#cb1-2"></a><span class="fu">library</span>(dplyr)</span>
-<span id="cb1-3"><a href="#cb1-3"></a><span class="fu">library</span>(lubridate)</span>
-<span id="cb1-4"><a href="#cb1-4"></a><span class="fu">library</span>(ggplot2)</span>
-<span id="cb1-5"><a href="#cb1-5"></a></span>
-<span id="cb1-6"><a href="#cb1-6"></a></span>
-<span id="cb1-7"><a href="#cb1-7"></a>cjb_ID <span class="ot">&lt;-</span> <span class="fu">get_user_id</span>(<span class="st">"cbarrie"</span>)</span>
-<span id="cb1-8"><a href="#cb1-8"></a>cjb_ID</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode numberSource r cell-code number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a><span class="fu">library</span>(academictwitteR)</span>
+<span id="cb4-2"><a href="#cb4-2"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb4-3"><a href="#cb4-3"></a><span class="fu">library</span>(lubridate)</span>
+<span id="cb4-4"><a href="#cb4-4"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb4-5"><a href="#cb4-5"></a></span>
+<span id="cb4-6"><a href="#cb4-6"></a></span>
+<span id="cb4-7"><a href="#cb4-7"></a>cjb_ID <span class="ot">&lt;-</span> <span class="fu">get_user_id</span>(<span class="st">"cbarrie"</span>)</span>
+<span id="cb4-8"><a href="#cb4-8"></a>cjb_ID</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-stdout">
 <pre><code>   cbarrie 
 "95226101" </code></pre>
@@ -420,9 +455,24 @@
 <section id="getting-whom-i-follow-friends" class="slide level2">
 <h2>Getting whom I follow (friends)</h2>
 <div class="panel-tabset">
-<ul id="tabset-1" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-1-1">User data</a></li><li><a href="#tabset-1-2">IDs</a></li></ul>
+<ul id="tabset-1" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-1-1">IDs</a></li><li><a href="#tabset-1-2">User data</a></li></ul>
 <div class="tab-content">
 <div id="tabset-1-1">
+<div class="cell">
+<div class="sourceCode" id="cb6"><pre class="sourceCode numberSource r cell-code number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a>userfwing <span class="ot">&lt;-</span> <span class="fu">get_user_following</span>(cjb_ID)</span>
+<span id="cb6-2"><a href="#cb6-2"></a></span>
+<span id="cb6-3"><a href="#cb6-3"></a>ids <span class="ot">&lt;-</span> userfwing<span class="sc">$</span>id</span>
+<span id="cb6-4"><a href="#cb6-4"></a></span>
+<span id="cb6-5"><a href="#cb6-5"></a><span class="fu">head</span>(ids)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="cell-output-stdout">
+<pre><code>[1] "1451947528333762562" "326311946"           "2458351124"         
+[4] "29943199"            "124852105"           "111456333"          </code></pre>
+</div>
+</div>
+</div>
+<div id="tabset-1-2">
 <div class="cell">
 <div class="cell-output-display">
 <table>
@@ -446,259 +496,99 @@
  </thead>
 <tbody>
   <tr>
-   <td style="text-align:left;"> 1152496807051530240 </td>
-   <td style="text-align:left;"> https://t.co/pwgN02OF9q </td>
-   <td style="text-align:left;"> 2019-07-20T08:33:45.000Z </td>
-   <td style="text-align:left;"> https://pbs.twimg.com/profile_images/1152498047416356864/QxuA-Pss_normal.jpg </td>
-   <td style="text-align:left;"> 5923 </td>
-   <td style="text-align:left;"> FALSE </td>
-   <td style="text-align:left;"> PriyaSatia </td>
-   <td style="text-align:left;"> Raymond A. Spruance Prof. of International and History and Prof. of History, Stanford </td>
-   <td style="text-align:left;"> 0, 23, https://t.co/pwgN02OF9q, https://history.stanford.edu/people/priya-satia, history.stanford.edu/people/priya-s… </td>
-   <td style="text-align:left;"> Priya Satia </td>
-   <td style="text-align:left;"> NA </td>
-   <td style="text-align:left;"> FALSE </td>
-   <td style="text-align:left;"> 1502801067305684994 </td>
-   <td style="text-align:left;"> 95226101 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 2352078128 </td>
-   <td style="text-align:left;"> https://t.co/xVcEwrXeIB </td>
-   <td style="text-align:left;"> 2014-02-19T18:22:05.000Z </td>
-   <td style="text-align:left;"> https://pbs.twimg.com/profile_images/1272582708200460289/iurd4f8Y_normal.jpg </td>
-   <td style="text-align:left;"> 2609 </td>
-   <td style="text-align:left;"> FALSE </td>
-   <td style="text-align:left;"> HSScomms </td>
-   <td style="text-align:left;"> #OpenAccess journal covering the Humanities, Social &amp; Behavioural Sciences. Published by Springer Nature. Indexed on #SSCI and #AHCI, among others. </td>
-   <td style="text-align:left;"> 0, 23, https://t.co/xVcEwrXeIB, http://go.nature.com/2GVNGw1, go.nature.com/2GVNGw1 </td>
-   <td style="text-align:left;"> Humanities &amp; Social Sciences Communications </td>
-   <td style="text-align:left;"> London, England </td>
-   <td style="text-align:left;"> FALSE </td>
-   <td style="text-align:left;"> 1499338973243707395 </td>
-   <td style="text-align:left;"> 95226101 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 873197744566960128 </td>
-   <td style="text-align:left;">  </td>
-   <td style="text-align:left;"> 2017-06-09T15:19:00.000Z </td>
-   <td style="text-align:left;"> https://pbs.twimg.com/profile_images/1334610043858202629/B3TbFcWE_normal.jpg </td>
-   <td style="text-align:left;"> 18 </td>
-   <td style="text-align:left;"> FALSE </td>
-   <td style="text-align:left;"> noahwp </td>
-   <td style="text-align:left;">  </td>
-   <td style="text-align:left;"> NULL </td>
-   <td style="text-align:left;"> Noah </td>
-   <td style="text-align:left;"> NA </td>
-   <td style="text-align:left;"> FALSE </td>
-   <td style="text-align:left;"> NA </td>
-   <td style="text-align:left;"> 95226101 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 1197276034288308224 </td>
-   <td style="text-align:left;"> https://t.co/xtFOw6QDPV </td>
-   <td style="text-align:left;"> 2019-11-20T22:10:44.000Z </td>
-   <td style="text-align:left;"> https://pbs.twimg.com/profile_images/1206696065770098689/KAVN1-r6_normal.jpg </td>
-   <td style="text-align:left;"> 198133 </td>
+   <td style="text-align:left;"> 14360732 </td>
+   <td style="text-align:left;"> https://t.co/joZkoftXiN </td>
+   <td style="text-align:left;"> 2008-04-11T13:28:46.000Z </td>
+   <td style="text-align:left;"> https://pbs.twimg.com/profile_images/1512248279328825346/i6t5--qk_normal.jpg </td>
+   <td style="text-align:left;"> 30205 </td>
    <td style="text-align:left;"> TRUE </td>
-   <td style="text-align:left;"> GitaGopinath </td>
-   <td style="text-align:left;"> First Deputy Managing Director of the IMF. Previously Chief Economist of IMF and Professor at Harvard's economics department. Views are my own. </td>
-   <td style="text-align:left;"> 0, 23, https://t.co/xtFOw6QDPV, https://www.imf.org/en/About/senior-officials/Bios/gita-gopinath, imf.org/en/About/senio… </td>
-   <td style="text-align:left;"> Gita Gopinath </td>
-   <td style="text-align:left;"> Washington, D.C. </td>
-   <td style="text-align:left;"> FALSE </td>
-   <td style="text-align:left;"> NA </td>
-   <td style="text-align:left;"> 95226101 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 170379490 </td>
-   <td style="text-align:left;"> https://t.co/gYsWptKG5b </td>
-   <td style="text-align:left;"> 2010-07-24T17:35:01.000Z </td>
-   <td style="text-align:left;"> https://pbs.twimg.com/profile_images/1194958467175505921/R6EWm1Pl_normal.jpg </td>
-   <td style="text-align:left;"> 7284 </td>
-   <td style="text-align:left;"> FALSE </td>
-   <td style="text-align:left;"> jkertzer </td>
-   <td style="text-align:left;"> Political scientist @Harvard | Author of https://t.co/c1rac3MaNq </td>
-   <td style="text-align:left;"> 0, 23, https://t.co/gYsWptKG5b, http://people.fas.harvard.edu/~jkertzer/, people.fas.harvard.edu/~jkertzer/ </td>
-   <td style="text-align:left;"> Josh Kertzer </td>
-   <td style="text-align:left;"> Cambridge, MA </td>
-   <td style="text-align:left;"> FALSE </td>
-   <td style="text-align:left;"> 1502311388101947395 </td>
-   <td style="text-align:left;"> 95226101 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 155771663 </td>
-   <td style="text-align:left;">  </td>
-   <td style="text-align:left;"> 2010-06-15T01:47:01.000Z </td>
-   <td style="text-align:left;"> https://pbs.twimg.com/profile_images/1035952056501260289/C6fgee7S_normal.jpg </td>
-   <td style="text-align:left;"> 1206 </td>
-   <td style="text-align:left;"> FALSE </td>
-   <td style="text-align:left;"> GregoryEady </td>
-   <td style="text-align:left;"> Assistant professor of political science &amp; Center for Social Data Science, University of Copenhagen </td>
-   <td style="text-align:left;"> NULL </td>
-   <td style="text-align:left;"> Gregory Eady </td>
-   <td style="text-align:left;"> Copenhagen, DK </td>
-   <td style="text-align:left;"> FALSE </td>
-   <td style="text-align:left;"> NA </td>
-   <td style="text-align:left;"> 95226101 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 81859001 </td>
-   <td style="text-align:left;"> http://t.co/57eOxqDykD </td>
-   <td style="text-align:left;"> 2009-10-12T14:51:06.000Z </td>
-   <td style="text-align:left;"> https://pbs.twimg.com/profile_images/1187390567610667008/i9xidJTk_normal.jpg </td>
-   <td style="text-align:left;"> 9921 </td>
-   <td style="text-align:left;"> FALSE </td>
-   <td style="text-align:left;"> shelbygrossman </td>
-   <td style="text-align:left;"> Research Scholar at the Stanford Internet Observatory. Political Scientist. https://t.co/cUhPRdE9wY </td>
-   <td style="text-align:left;"> 0, 22, http://t.co/57eOxqDykD, http://www.shelbygrossman.com, shelbygrossman.com </td>
-   <td style="text-align:left;"> Shelby Grossman </td>
-   <td style="text-align:left;"> Stanford, CA </td>
-   <td style="text-align:left;"> FALSE </td>
-   <td style="text-align:left;"> 1445036056525426692 </td>
-   <td style="text-align:left;"> 95226101 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 280994911 </td>
-   <td style="text-align:left;"> https://t.co/b3oyr4aX5g </td>
-   <td style="text-align:left;"> 2011-04-12T12:28:15.000Z </td>
-   <td style="text-align:left;"> https://pbs.twimg.com/profile_images/529859193730121729/QSDFtYXF_normal.jpeg </td>
-   <td style="text-align:left;"> 3363 </td>
-   <td style="text-align:left;"> FALSE </td>
-   <td style="text-align:left;"> ezagheni </td>
-   <td style="text-align:left;"> Director of the Max Planck Institute for Demographic Research | Head of the DCoDe Lab - Digital and Computational Demography </td>
-   <td style="text-align:left;"> 0, 23, https://t.co/b3oyr4aX5g, https://www.demogr.mpg.de/en/about_us_6113/staff_directory_1899/emilio_zagheni_2243/, demogr.mpg.de/en/about_us_61… </td>
-   <td style="text-align:left;"> Emilio Zagheni </td>
-   <td style="text-align:left;"> Rostock, Germany </td>
-   <td style="text-align:left;"> FALSE </td>
-   <td style="text-align:left;"> 1498714655199580160 </td>
-   <td style="text-align:left;"> 95226101 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 466096296 </td>
-   <td style="text-align:left;"> https://t.co/JsaQmfQvIv </td>
-   <td style="text-align:left;"> 2012-01-17T02:04:39.000Z </td>
-   <td style="text-align:left;"> https://pbs.twimg.com/profile_images/1303328646971699200/UmCH5iEO_normal.jpg </td>
-   <td style="text-align:left;"> 19166 </td>
+   <td style="text-align:left;"> daveyalba </td>
+   <td style="text-align:left;"> soon-to-be @technology reporter / ask for my Signal / I take tips in Tagalog and yes I will go to lunch at Jollibee with you </td>
+   <td style="text-align:left;"> 0, 23, https://t.co/joZkoftXiN, https://www.daveyalba.com/, daveyalba.com </td>
+   <td style="text-align:left;"> Davey Alba </td>
+   <td style="text-align:left;"> New York </td>
    <td style="text-align:left;"> TRUE </td>
-   <td style="text-align:left;"> EricKlinenberg </td>
-   <td style="text-align:left;"> Helen Gould Shepard Professor of Social Science at NYU. Director @nyu_ipk Books: Heat Wave, Going Solo, Palaces for the People. Next: *2020: A Social Autopsy* </td>
-   <td style="text-align:left;"> 0, 23, https://t.co/JsaQmfQvIv, http://www.ericklinenberg.com, ericklinenberg.com </td>
-   <td style="text-align:left;"> Eric Klinenberg </td>
-   <td style="text-align:left;"> New York City </td>
-   <td style="text-align:left;"> FALSE </td>
-   <td style="text-align:left;"> 1038576645370773504 </td>
+   <td style="text-align:left;"> 1506642933281394689 </td>
    <td style="text-align:left;"> 95226101 </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> 1487889663738224642 </td>
-   <td style="text-align:left;"> https://t.co/ynjoQFj0he </td>
-   <td style="text-align:left;"> 2022-01-30T20:45:21.000Z </td>
-   <td style="text-align:left;"> https://pbs.twimg.com/profile_images/1487889904453488650/XbQ32mca_normal.jpg </td>
-   <td style="text-align:left;"> 113 </td>
+   <td style="text-align:left;"> 333434268 </td>
+   <td style="text-align:left;"> https://t.co/R4TnWkOfeZ </td>
+   <td style="text-align:left;"> 2011-07-11T14:49:07.000Z </td>
+   <td style="text-align:left;"> https://pbs.twimg.com/profile_images/1299381808841150464/STrArx3y_normal.jpg </td>
+   <td style="text-align:left;"> 742 </td>
    <td style="text-align:left;"> FALSE </td>
-   <td style="text-align:left;"> EfficientPod </td>
-   <td style="text-align:left;"> A podcast about constitutions from the Oxford Constitutional Studies Forum, a collaborative project of academics from @Politics_Oxford and @OxfordLawFac. </td>
-   <td style="text-align:left;"> 0, 23, https://t.co/ynjoQFj0he, https://efficientsecrets.buzzsprout.com/1913230, efficientsecrets.buzzsprout.com/1913230 </td>
-   <td style="text-align:left;"> Efficient Secrets Podcast </td>
-   <td style="text-align:left;"> Oxford </td>
+   <td style="text-align:left;"> AlexDBlackman </td>
+   <td style="text-align:left;"> Assistant Professor @CornellGov, former @NYUAbuDhabi postdoc, @Stanford PhD, CASA &amp; @CarnegieEndow Fellow. Into Picasso, poetry, MENA politics, and Pittsburgh. </td>
+   <td style="text-align:left;"> 0, 23, https://t.co/R4TnWkOfeZ, http://www.alexandrablackman.com/, alexandrablackman.com </td>
+   <td style="text-align:left;"> Alexandra Blackman </td>
+   <td style="text-align:left;"> NA </td>
    <td style="text-align:left;"> FALSE </td>
-   <td style="text-align:left;"> 1491009474349649922 </td>
+   <td style="text-align:left;"> 1052677084118540288 </td>
    <td style="text-align:left;"> 95226101 </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> 1601621624 </td>
-   <td style="text-align:left;"> https://t.co/FUmpR7p3uy </td>
-   <td style="text-align:left;"> 2013-07-17T18:59:51.000Z </td>
-   <td style="text-align:left;"> https://pbs.twimg.com/profile_images/1477396038910623744/A-ZIqOkU_normal.jpg </td>
-   <td style="text-align:left;"> 4060 </td>
+   <td style="text-align:left;"> 57706523 </td>
+   <td style="text-align:left;"> https://t.co/U8lEn7teju </td>
+   <td style="text-align:left;"> 2009-07-17T17:47:54.000Z </td>
+   <td style="text-align:left;"> https://pbs.twimg.com/profile_images/579013131915145216/uKE5Sae6_normal.jpeg </td>
+   <td style="text-align:left;"> 10815 </td>
+   <td style="text-align:left;"> FALSE </td>
+   <td style="text-align:left;"> DrSophieSmith </td>
+   <td style="text-align:left;"> Associate Professor of Political Theory, @UniofOxford and Fellow of @UnivOxford. Co-executive editor @JHIdeas. Hobbes to hooks. </td>
+   <td style="text-align:left;"> 0, 23, https://t.co/U8lEn7teju, https://sophiesmithoxford.com, sophiesmithoxford.com </td>
+   <td style="text-align:left;"> Sophie Smith </td>
+   <td style="text-align:left;"> Oxford, England </td>
+   <td style="text-align:left;"> FALSE </td>
+   <td style="text-align:left;"> 905106194284519424 </td>
+   <td style="text-align:left;"> 95226101 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 288755234 </td>
+   <td style="text-align:left;"> https://t.co/ZoOPpVAJcd </td>
+   <td style="text-align:left;"> 2011-04-27T12:18:25.000Z </td>
+   <td style="text-align:left;"> https://pbs.twimg.com/profile_images/1498442172575760387/ZzN6oVSL_normal.jpg </td>
+   <td style="text-align:left;"> 226374 </td>
    <td style="text-align:left;"> TRUE </td>
-   <td style="text-align:left;"> Monashtayya </td>
-   <td style="text-align:left;"> Communicator l Campaigner l Digital Rights Defender | MA student at @UniWestminster l Advocacy Advisor @7amleh l Ex-work @AMANcoalition l @24fmPalestine </td>
-   <td style="text-align:left;"> 0, 23, https://t.co/FUmpR7p3uy, https://linktr.ee/monashtaya, linktr.ee/monashtaya </td>
-   <td style="text-align:left;"> Mona shtaya </td>
-   <td style="text-align:left;"> NA </td>
+   <td style="text-align:left;"> EliotHiggins </td>
+   <td style="text-align:left;"> Founder and creative director of Bellingcat and director of Bellingcat Productions BV. Author of We Are Bellingcat. </td>
+   <td style="text-align:left;"> 0, 23, https://t.co/ZoOPpVAJcd, http://www.bellingcat.com, bellingcat.com </td>
+   <td style="text-align:left;"> Eliot Higgins </td>
+   <td style="text-align:left;"> In front of a laptop. </td>
    <td style="text-align:left;"> FALSE </td>
-   <td style="text-align:left;"> 1506333529000615937 </td>
+   <td style="text-align:left;"> 1495705304897626112 </td>
    <td style="text-align:left;"> 95226101 </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> 1122397601704312834 </td>
-   <td style="text-align:left;">  </td>
-   <td style="text-align:left;"> 2019-04-28T07:10:16.000Z </td>
-   <td style="text-align:left;"> https://pbs.twimg.com/profile_images/1122399636247973888/JMptcQBh_normal.jpg </td>
-   <td style="text-align:left;"> 1496 </td>
+   <td style="text-align:left;"> 2688066517 </td>
+   <td style="text-align:left;"> https://t.co/GIFEWovXa2 </td>
+   <td style="text-align:left;"> 2014-07-28T18:12:04.000Z </td>
+   <td style="text-align:left;"> https://pbs.twimg.com/profile_images/884800862400458754/Z1I2x5So_normal.jpg </td>
+   <td style="text-align:left;"> 23656 </td>
    <td style="text-align:left;"> FALSE </td>
-   <td style="text-align:left;"> GovindaRadhika </td>
-   <td style="text-align:left;"> Senior Lecturer in Sociology, University of Edinburgh. Intersectionality, decoloniality, feminism, gender politics of development, knowledge production, S Asia. </td>
-   <td style="text-align:left;"> NULL </td>
-   <td style="text-align:left;"> Dr Radhika Govinda </td>
-   <td style="text-align:left;"> Edinburgh and Delhi </td>
+   <td style="text-align:left;"> yuanyi_z </td>
+   <td style="text-align:left;"> Sometime lecturer in Politics &amp; IR DPhil @UniofOxford | Law &amp; History of International Order | Snr research fellow @judicialpwr | too simple, sometimes naive. </td>
+   <td style="text-align:left;"> 0, 23, https://t.co/GIFEWovXa2, https://yuanyizhu.substack.com/p/coming-soon?r=29al3&amp;utm_campaign=post&amp;utm_medium=web&amp;utm_source=cop, yuanyizhu.substack.com/p/coming-soon?… </td>
+   <td style="text-align:left;"> Yuan Yi Zhu </td>
+   <td style="text-align:left;"> Oxford/Puissance du Canada </td>
    <td style="text-align:left;"> FALSE </td>
-   <td style="text-align:left;"> 1308359301707296769 </td>
+   <td style="text-align:left;"> 1488174468426084354 </td>
    <td style="text-align:left;"> 95226101 </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> 1244989850106953728 </td>
-   <td style="text-align:left;"> https://t.co/M23Ov40xvA </td>
-   <td style="text-align:left;"> 2020-03-31T14:08:15.000Z </td>
-   <td style="text-align:left;"> https://pbs.twimg.com/profile_images/1244990098015424516/A73OzHH1_normal.jpg </td>
-   <td style="text-align:left;"> 4237 </td>
-   <td style="text-align:left;"> FALSE </td>
-   <td style="text-align:left;"> annemeng_ </td>
-   <td style="text-align:left;"> Assistant Prof of Politics @UVA. Authoritarian Politics &amp; Democratic Erosion 👑 Author of Constraining Dictatorship📕 Card-carrying member of https://t.co/CADxGx2LT1♟ </td>
-   <td style="text-align:left;"> 0, 23, https://t.co/M23Ov40xvA, http://annemeng.com, annemeng.com </td>
-   <td style="text-align:left;"> Anne Meng </td>
-   <td style="text-align:left;"> Richmond, VA </td>
-   <td style="text-align:left;"> FALSE </td>
-   <td style="text-align:left;"> 1300540302688747523 </td>
-   <td style="text-align:left;"> 95226101 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 785764172 </td>
-   <td style="text-align:left;"> https://t.co/qHQ7cRo4NK </td>
-   <td style="text-align:left;"> 2012-08-28T00:04:59.000Z </td>
-   <td style="text-align:left;"> https://pbs.twimg.com/profile_images/2577880769/687474703a2f2f636c2e6c792f696d6167652f337330463237324b3254324c2f636f6e74656e74_normal.png </td>
-   <td style="text-align:left;"> 87818 </td>
-   <td style="text-align:left;"> FALSE </td>
-   <td style="text-align:left;"> githubstatus </td>
-   <td style="text-align:left;">  </td>
-   <td style="text-align:left;"> 0, 23, https://t.co/qHQ7cRo4NK, http://www.githubstatus.com, githubstatus.com </td>
-   <td style="text-align:left;"> GitHub Status </td>
-   <td style="text-align:left;"> NA </td>
-   <td style="text-align:left;"> FALSE </td>
-   <td style="text-align:left;"> NA </td>
-   <td style="text-align:left;"> 95226101 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 49129289 </td>
-   <td style="text-align:left;"> https://t.co/ttvefKGNMV </td>
-   <td style="text-align:left;"> 2009-06-20T21:41:33.000Z </td>
-   <td style="text-align:left;"> https://pbs.twimg.com/profile_images/1447756419487444992/69NWxtjQ_normal.jpg </td>
-   <td style="text-align:left;"> 57267 </td>
+   <td style="text-align:left;"> 50122046 </td>
+   <td style="text-align:left;"> http://t.co/hJAFiEHwc1 </td>
+   <td style="text-align:left;"> 2009-06-23T22:21:08.000Z </td>
+   <td style="text-align:left;"> https://pbs.twimg.com/profile_images/1216066068583800832/-6y5f5Ji_normal.jpg </td>
+   <td style="text-align:left;"> 19238 </td>
    <td style="text-align:left;"> TRUE </td>
-   <td style="text-align:left;"> ruha9 </td>
-   <td style="text-align:left;"> VIRAL JUSTICE: How We Grow the World We Want @PrincetonUPress is coming on October 11, 2022, Pre-order here: https://t.co/CKetvsWDKw </td>
-   <td style="text-align:left;"> 0, 23, https://t.co/ttvefKGNMV, http://www.ruhabenjamin.com, ruhabenjamin.com </td>
-   <td style="text-align:left;"> Ruha Benjamin </td>
-   <td style="text-align:left;"> Princeton NJ, Lenape Territory </td>
+   <td style="text-align:left;"> melissaterras </td>
+   <td style="text-align:left;"> Prof of Digital Cultural Heritage @EdinburghUni | computers vs the past | Director @edCDCS | Research Director @UoE_EFI | Co-Director @createinf | pers. comm. </td>
+   <td style="text-align:left;"> 0, 22, http://t.co/hJAFiEHwc1, http://melissaterras.org/, melissaterras.org </td>
+   <td style="text-align:left;"> melissa terras </td>
+   <td style="text-align:left;"> Edinburgh, Scotland </td>
    <td style="text-align:left;"> FALSE </td>
-   <td style="text-align:left;"> 1501921123344211971 </td>
-   <td style="text-align:left;"> 95226101 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 997914914147721216 </td>
-   <td style="text-align:left;">  </td>
-   <td style="text-align:left;"> 2018-05-19T19:00:30.000Z </td>
-   <td style="text-align:left;"> https://pbs.twimg.com/profile_images/1124141133746057217/x2EDPj_F_normal.jpg </td>
-   <td style="text-align:left;"> 1296 </td>
-   <td style="text-align:left;"> FALSE </td>
-   <td style="text-align:left;"> meharpist </td>
-   <td style="text-align:left;"> I’m a harpist and scientist, working as an editor for @nature when I’m not making music, biking or skiing. All views are my own. </td>
-   <td style="text-align:left;"> NULL </td>
-   <td style="text-align:left;"> Mary Elizabeth </td>
-   <td style="text-align:left;"> Manhattan, NY </td>
-   <td style="text-align:left;"> FALSE </td>
-   <td style="text-align:left;"> NA </td>
+   <td style="text-align:left;"> 1463934117414850566 </td>
    <td style="text-align:left;"> 95226101 </td>
   </tr>
   <tr>
@@ -718,55 +608,211 @@
    <td style="text-align:left;"> 95226101 </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> 1220898172979073024 </td>
-   <td style="text-align:left;"> https://t.co/g0935TVDrE </td>
-   <td style="text-align:left;"> 2020-01-25T02:36:30.000Z </td>
-   <td style="text-align:left;"> https://pbs.twimg.com/profile_images/1220913948746289152/oTai_wt7_normal.jpg </td>
-   <td style="text-align:left;"> 656 </td>
-   <td style="text-align:left;"> FALSE </td>
-   <td style="text-align:left;"> PronouncedKeil </td>
-   <td style="text-align:left;"> #BlackLivesMatter
-
-| Epidemiologist by day and often night | @UNC (soon @theNCI) | #CausalTwitter | Environment | Mixtures | Decisions </td>
-   <td style="text-align:left;"> 0, 23, https://t.co/g0935TVDrE, https://alexpkeil1.github.io/, alexpkeil1.github.io </td>
-   <td style="text-align:left;"> Alex Keil </td>
-   <td style="text-align:left;"> North Carolina </td>
-   <td style="text-align:left;"> FALSE </td>
-   <td style="text-align:left;"> 1338873049026867201 </td>
-   <td style="text-align:left;"> 95226101 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 4775821823 </td>
+   <td style="text-align:left;"> 234319913 </td>
    <td style="text-align:left;">  </td>
-   <td style="text-align:left;"> 2016-01-11T16:32:16.000Z </td>
-   <td style="text-align:left;"> https://pbs.twimg.com/profile_images/686960521321537537/jYmGInfn_normal.jpg </td>
-   <td style="text-align:left;"> 1087 </td>
+   <td style="text-align:left;"> 2011-01-05T11:01:29.000Z </td>
+   <td style="text-align:left;"> https://pbs.twimg.com/profile_images/1391686349628059648/Tz2VebE4_normal.jpg </td>
+   <td style="text-align:left;"> 9920 </td>
    <td style="text-align:left;"> FALSE </td>
-   <td style="text-align:left;"> spsgradschool </td>
-   <td style="text-align:left;"> Graduate School
-School of Social and Political Science 
-University of Edinburgh </td>
+   <td style="text-align:left;"> DrDaveOBrien </td>
+   <td style="text-align:left;"> Prof of Cultural &amp; Creative Industries @UoS_Management &amp; @NewBooksCritThe host. Culture is bad for you https://t.co/cRT3UMljP9 </td>
    <td style="text-align:left;"> NULL </td>
-   <td style="text-align:left;"> SPS Graduate School </td>
-   <td style="text-align:left;"> Edinburgh, Scotland </td>
+   <td style="text-align:left;"> Dave O'Brien </td>
+   <td style="text-align:left;"> London, Sheffield &amp; Liverpool </td>
+   <td style="text-align:left;"> FALSE </td>
+   <td style="text-align:left;"> 1432972019830861831 </td>
+   <td style="text-align:left;"> 95226101 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 2840596746 </td>
+   <td style="text-align:left;"> https://t.co/BinW8DEgtH </td>
+   <td style="text-align:left;"> 2014-10-05T00:15:58.000Z </td>
+   <td style="text-align:left;"> https://pbs.twimg.com/profile_images/1066404886047207424/gN83Z288_normal.jpg </td>
+   <td style="text-align:left;"> 4784 </td>
+   <td style="text-align:left;"> FALSE </td>
+   <td style="text-align:left;"> namalhotra </td>
+   <td style="text-align:left;"> Edith M. Cornell Professor of Political Economy @StanfordGSB. Director of Center for Social Innovation. Views my own. </td>
+   <td style="text-align:left;"> 0, 23, https://t.co/BinW8DEgtH, http://www.stanford.edu/~neilm, stanford.edu/~neilm </td>
+   <td style="text-align:left;"> Neil Malhotra </td>
+   <td style="text-align:left;"> Stanford, CA </td>
    <td style="text-align:left;"> FALSE </td>
    <td style="text-align:left;"> NA </td>
    <td style="text-align:left;"> 95226101 </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> 261630651 </td>
-   <td style="text-align:left;"> https://t.co/0mblEu1uVT </td>
-   <td style="text-align:left;"> 2011-03-06T10:28:00.000Z </td>
-   <td style="text-align:left;"> https://pbs.twimg.com/profile_images/1500369049972363264/8RddPOWO_normal.jpg </td>
-   <td style="text-align:left;"> 35992 </td>
+   <td style="text-align:left;"> 3436812551 </td>
+   <td style="text-align:left;"> https://t.co/s643ifXmdI </td>
+   <td style="text-align:left;"> 2015-08-23T15:06:18.000Z </td>
+   <td style="text-align:left;"> https://pbs.twimg.com/profile_images/728713121884311552/Yjoenpxp_normal.png </td>
+   <td style="text-align:left;"> 4662 </td>
    <td style="text-align:left;"> FALSE </td>
-   <td style="text-align:left;"> MUNQITHDAGHER </td>
-   <td style="text-align:left;"> (من لديه خط أحمر على التفكير فلا يدخل علينا) رئيس المجموعة المستقلة للبحوث ومدير الشرق الاوسط في كالوب الدولية للأبحاث،باحث بمركز الدراسات الستراتيجية،واشنطن </td>
-   <td style="text-align:left;"> 0, 23, https://t.co/0mblEu1uVT, http://www.iiacss.org, iiacss.org </td>
-   <td style="text-align:left;"> MUNQITH DAGHER </td>
+   <td style="text-align:left;"> documentnow </td>
+   <td style="text-align:left;"> tools + community + ethics for documenting the now. funded by @mellonfdn. banner image: Haaaaands Up! Dooooon't Shoot! by @jbouie. @BergisJules &amp; @edsu tweeting </td>
+   <td style="text-align:left;"> 0, 23, https://t.co/s643ifXmdI, http://www.docnow.io, docnow.io </td>
+   <td style="text-align:left;"> DocumentingTheNow </td>
+   <td style="text-align:left;"> in the network </td>
+   <td style="text-align:left;"> FALSE </td>
+   <td style="text-align:left;"> 1511064541001662475 </td>
+   <td style="text-align:left;"> 95226101 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 1596620473 </td>
+   <td style="text-align:left;"> https://t.co/HBMTnjKMlp </td>
+   <td style="text-align:left;"> 2013-07-15T19:37:39.000Z </td>
+   <td style="text-align:left;"> https://pbs.twimg.com/profile_images/1465493517569040387/KRFhdUSI_normal.jpg </td>
+   <td style="text-align:left;"> 15754 </td>
+   <td style="text-align:left;"> FALSE </td>
+   <td style="text-align:left;"> cmMcConnaughy </td>
+   <td style="text-align:left;"> Political scientist @Princeton | race, gender, activism, democracy | Author, The Woman Suffrage Movement in America | Mom of 3 | 📷 Sameer Khan/Fotobuddy </td>
+   <td style="text-align:left;"> 0, 23, https://t.co/HBMTnjKMlp, http://www.corrinemcconnaughy.com, corrinemcconnaughy.com </td>
+   <td style="text-align:left;"> Corrine McConnaughy </td>
+   <td style="text-align:left;"> New Jersey, USA </td>
+   <td style="text-align:left;"> FALSE </td>
+   <td style="text-align:left;"> 450769190451150848 </td>
+   <td style="text-align:left;"> 95226101 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 20733975 </td>
+   <td style="text-align:left;"> https://t.co/ccI8V0OHb8 </td>
+   <td style="text-align:left;"> 2009-02-13T00:07:02.000Z </td>
+   <td style="text-align:left;"> https://pbs.twimg.com/profile_images/575703741661249536/8437hc2x_normal.jpeg </td>
+   <td style="text-align:left;"> 15098 </td>
+   <td style="text-align:left;"> FALSE </td>
+   <td style="text-align:left;"> tedmiguel </td>
+   <td style="text-align:left;"> Economist; Author; Oxfam Professor of Environmental &amp; Resource Economics, Director of Center for Effective Global Action at University of California, Berkeley </td>
+   <td style="text-align:left;"> 0, 23, https://t.co/ccI8V0OHb8, http://emiguel.econ.berkeley.edu/, emiguel.econ.berkeley.edu </td>
+   <td style="text-align:left;"> Edward Miguel </td>
+   <td style="text-align:left;"> Berkeley, CA </td>
+   <td style="text-align:left;"> FALSE </td>
    <td style="text-align:left;"> NA </td>
+   <td style="text-align:left;"> 95226101 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 2584784815 </td>
+   <td style="text-align:left;"> https://t.co/lUBB6lWOPo </td>
+   <td style="text-align:left;"> 2014-06-23T23:51:02.000Z </td>
+   <td style="text-align:left;"> https://pbs.twimg.com/profile_images/1452099521593454593/TmPCdxH7_normal.jpg </td>
+   <td style="text-align:left;"> 4110 </td>
    <td style="text-align:left;"> FALSE </td>
-   <td style="text-align:left;"> 1240570391501910017 </td>
+   <td style="text-align:left;"> ryanjgallag </td>
+   <td style="text-align:left;"> Network science ∩ Communication. PhD candidate @NUnetsi @CoMMLabNU. Affiliate @unc_citap. Amplification, marginalization, ecologies, fingerstyle guitar. He/they </td>
+   <td style="text-align:left;"> 0, 23, https://t.co/lUBB6lWOPo, http://ryanjgallagher.github.io, ryanjgallagher.github.io </td>
+   <td style="text-align:left;"> Ryan J. Gallagher (seeking data science positions) </td>
+   <td style="text-align:left;"> Boston, MA </td>
+   <td style="text-align:left;"> FALSE </td>
+   <td style="text-align:left;"> 1372249623746732032 </td>
+   <td style="text-align:left;"> 95226101 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 301482688 </td>
+   <td style="text-align:left;"> https://t.co/dZNCtUr7KJ </td>
+   <td style="text-align:left;"> 2011-05-19T15:03:14.000Z </td>
+   <td style="text-align:left;"> https://pbs.twimg.com/profile_images/1496463842272026629/cy2oGCyl_normal.jpg </td>
+   <td style="text-align:left;"> 8655 </td>
+   <td style="text-align:left;"> FALSE </td>
+   <td style="text-align:left;"> MonicaLMarks </td>
+   <td style="text-align:left;"> Prof of Middle East Politics @NYUAbuDhabi. Tunisia, Turkey, Gulf. PhD @StAntsCollege Oxford. Fulbright, Rhodes, @HarvardWCFIA. Helping 🇺🇦 evacuation </td>
+   <td style="text-align:left;"> 0, 23, https://t.co/dZNCtUr7KJ, https://oxford.academia.edu/MonicaMarks, oxford.academia.edu/MonicaMarks </td>
+   <td style="text-align:left;"> Monica Marks </td>
+   <td style="text-align:left;"> Dubai - Tunis - Istanbul </td>
+   <td style="text-align:left;"> FALSE </td>
+   <td style="text-align:left;"> 1490828335773110277 </td>
+   <td style="text-align:left;"> 95226101 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 1222882934 </td>
+   <td style="text-align:left;"> https://t.co/rhJbD4pXzO </td>
+   <td style="text-align:left;"> 2013-02-26T20:22:28.000Z </td>
+   <td style="text-align:left;"> https://pbs.twimg.com/profile_images/925754812632838149/zP3qgv1r_normal.jpg </td>
+   <td style="text-align:left;"> 700 </td>
+   <td style="text-align:left;"> FALSE </td>
+   <td style="text-align:left;"> BrunelUCU </td>
+   <td style="text-align:left;"> Brunel University Branch of UCU </td>
+   <td style="text-align:left;"> 0, 23, https://t.co/rhJbD4pXzO, https://brunel.web.ucu.org.uk/, brunel.web.ucu.org.uk </td>
+   <td style="text-align:left;"> Brunel UCU </td>
+   <td style="text-align:left;"> United Kingdom </td>
+   <td style="text-align:left;"> FALSE </td>
+   <td style="text-align:left;"> 1508388781405216773 </td>
+   <td style="text-align:left;"> 95226101 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 760949695 </td>
+   <td style="text-align:left;"> https://t.co/alocjDGGqo </td>
+   <td style="text-align:left;"> 2012-08-16T06:10:33.000Z </td>
+   <td style="text-align:left;"> https://pbs.twimg.com/profile_images/1234088779390103552/BnlMoIti_normal.jpg </td>
+   <td style="text-align:left;"> 17631 </td>
+   <td style="text-align:left;"> FALSE </td>
+   <td style="text-align:left;"> selina_todd </td>
+   <td style="text-align:left;"> Comprehensively educated lover of porridge, feminism &amp; socialism. Writer. Prof Modern History @UniofOxford. Women are a sex not a pronoun. Mind &amp; tweets my own. </td>
+   <td style="text-align:left;"> 0, 23, https://t.co/alocjDGGqo, http://selinatodd.com, selinatodd.com </td>
+   <td style="text-align:left;"> Selina Todd </td>
+   <td style="text-align:left;"> Unicorn free zone </td>
+   <td style="text-align:left;"> FALSE </td>
+   <td style="text-align:left;"> 1376460764790333440 </td>
+   <td style="text-align:left;"> 95226101 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 1136609944042479616 </td>
+   <td style="text-align:left;"> https://t.co/JBh0iiw9M6 </td>
+   <td style="text-align:left;"> 2019-06-06T12:25:02.000Z </td>
+   <td style="text-align:left;"> https://pbs.twimg.com/profile_images/1235549041397616641/QMsVlvt9_normal.jpg </td>
+   <td style="text-align:left;"> 112 </td>
+   <td style="text-align:left;"> FALSE </td>
+   <td style="text-align:left;"> ruilinlai </td>
+   <td style="text-align:left;"> M.Phil. stud @HKUST. I study media capture and political leadership with #Python and #RStats. Libertarian. </td>
+   <td style="text-align:left;"> 0, 23, https://t.co/JBh0iiw9M6, http://ruilinlai.com, ruilinlai.com </td>
+   <td style="text-align:left;"> Ruilin LAI </td>
+   <td style="text-align:left;"> Abu Dhabi </td>
+   <td style="text-align:left;"> FALSE </td>
+   <td style="text-align:left;"> NA </td>
+   <td style="text-align:left;"> 95226101 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 71491041 </td>
+   <td style="text-align:left;"> https://t.co/0ZX0NlXhsY </td>
+   <td style="text-align:left;"> 2009-09-04T08:49:17.000Z </td>
+   <td style="text-align:left;"> https://pbs.twimg.com/profile_images/1468661217866747910/lXPgIP0H_normal.jpg </td>
+   <td style="text-align:left;"> 25007 </td>
+   <td style="text-align:left;"> FALSE </td>
+   <td style="text-align:left;"> polblonde </td>
+   <td style="text-align:left;"> Journalist. Author of novels &amp; non-fiction inc Misogynies. No longer Co-chair of the Mayor’s VAWG Board. Still a feminist. Member of Sex Matters Advisory Group. </td>
+   <td style="text-align:left;"> 0, 23, https://t.co/0ZX0NlXhsY, http://www.politicalblonde.com, politicalblonde.com </td>
+   <td style="text-align:left;"> Joan Smith </td>
+   <td style="text-align:left;"> London </td>
+   <td style="text-align:left;"> FALSE </td>
+   <td style="text-align:left;"> 1366320332374704130 </td>
+   <td style="text-align:left;"> 95226101 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 136639346 </td>
+   <td style="text-align:left;">  </td>
+   <td style="text-align:left;"> 2010-04-24T13:55:36.000Z </td>
+   <td style="text-align:left;"> https://pbs.twimg.com/profile_images/1416021010306924545/7JE_qUh6_normal.jpg </td>
+   <td style="text-align:left;"> 722 </td>
+   <td style="text-align:left;"> FALSE </td>
+   <td style="text-align:left;"> mdhrobbins </td>
+   <td style="text-align:left;"> PhD • Director of @ArabBarometer • Life starts above 10,000 feet • Go Blue </td>
+   <td style="text-align:left;"> NULL </td>
+   <td style="text-align:left;"> Michael Robbins </td>
+   <td style="text-align:left;"> Land of Enchantment </td>
+   <td style="text-align:left;"> FALSE </td>
+   <td style="text-align:left;"> NA </td>
+   <td style="text-align:left;"> 95226101 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 616561830 </td>
+   <td style="text-align:left;">  </td>
+   <td style="text-align:left;"> 2012-06-23T21:16:00.000Z </td>
+   <td style="text-align:left;"> https://pbs.twimg.com/profile_images/1130423139345813505/MKXo6xLr_normal.jpg </td>
+   <td style="text-align:left;"> 380 </td>
+   <td style="text-align:left;"> FALSE </td>
+   <td style="text-align:left;"> TJermanova </td>
+   <td style="text-align:left;"> Assistant Professor @FF_CUNI, Research Fellow @AMO_cz, #Egypt #Tunisia comparative politics democracy constitution-making, PhD @PAISWarwick, views are my own </td>
+   <td style="text-align:left;"> NULL </td>
+   <td style="text-align:left;"> Tereza Jermanova </td>
+   <td style="text-align:left;"> Prague, Czech Republic </td>
+   <td style="text-align:left;"> FALSE </td>
+   <td style="text-align:left;"> 1326468439410667525 </td>
    <td style="text-align:left;"> 95226101 </td>
   </tr>
 </tbody>
@@ -775,46 +821,58 @@ University of Edinburgh </td>
 </div>
 </div>
 </div>
-<div id="tabset-1-2">
-<div class="cell">
-<div class="sourceCode" id="cb3"><pre class="sourceCode numberSource r cell-code number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a>userfwing <span class="ot">&lt;-</span> <span class="fu">get_user_following</span>(cjb_ID)</span>
-<span id="cb3-2"><a href="#cb3-2"></a></span>
-<span id="cb3-3"><a href="#cb3-3"></a>ids <span class="ot">&lt;-</span> userfwing<span class="sc">$</span>id</span>
-<span id="cb3-4"><a href="#cb3-4"></a></span>
-<span id="cb3-5"><a href="#cb3-5"></a><span class="fu">head</span>(ids)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div class="cell">
-<div class="cell-output-stdout">
-<pre><code>[1] "1451947528333762562" "326311946"           "2458351124"         
-[4] "29943199"            "124852105"           "111456333"          </code></pre>
-</div>
-</div>
-</div>
 </div>
 </div>
 </section>
 <section id="user-level-inference" class="slide level2">
 <h2>User-level inference</h2>
+<p>Example from <a href="https://github.com/euagendas/m3inference">here</a></p>
 <div class="cell">
-<div class="sourceCode" id="cb5"><pre class="sourceCode numberSource r cell-code number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a>devtools<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">"pablobarbera/twitter_ideology/pkg/tweetscores"</span>)</span>
-<span id="cb5-2"><a href="#cb5-2"></a><span class="fu">library</span>(tweetscores)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode numberSource python cell-code number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1"></a><span class="im">from</span> m3inference <span class="im">import</span> M3Inference</span>
+<span id="cb8-2"><a href="#cb8-2"></a><span class="im">import</span> pprint</span>
+<span id="cb8-3"><a href="#cb8-3"></a>m3 <span class="op">=</span> M3Inference() <span class="co"># see docstring for details</span></span>
+<span id="cb8-4"><a href="#cb8-4"></a>pred <span class="op">=</span> m3.infer(<span class="st">'./test/data_resized.jsonl'</span>) <span class="co"># also see docstring for details</span></span>
+<span id="cb8-5"><a href="#cb8-5"></a>pprint.pprint(pred)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+<pre><code>OrderedDict([('720389270335135745',
+              {'age': {'19-29': 0.1546,
+                       '30-39': 0.114,
+                       '&lt;=18': 0.0481,
+                       '&gt;=40': 0.6833},
+               'gender': {'female': 0.0066, 'male': 0.9934},
+               'org': {'is-org': 0.7508, 'non-org': 0.2492}}),
+             ('21447363',
+              {'age': {'19-29': 0.0157,
+                       '30-39': 0.9837,
+                       '&lt;=18': 0.0004,
+                       '&gt;=40': 0.0002},
+               'gender': {'female': 0.9866, 'male': 0.0134},
+               'org': {'is-org': 0.0002, 'non-org': 0.9998}}),
+    ...
+  ...</code></pre>
 </section>
 <section id="user-level-inference-1" class="slide level2">
 <h2>User-level inference</h2>
 <div class="cell">
-<div class="sourceCode" id="cb6"><pre class="sourceCode numberSource r cell-code number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a>results <span class="ot">&lt;-</span> <span class="fu">estimateIdeology</span>(<span class="st">"cbarrie"</span>, ids)</span>
-<span id="cb6-2"><a href="#cb6-2"></a><span class="fu">plot</span>(results)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode numberSource r cell-code number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1"></a>devtools<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">"pablobarbera/twitter_ideology/pkg/tweetscores"</span>)</span>
+<span id="cb10-2"><a href="#cb10-2"></a><span class="fu">library</span>(tweetscores)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="user-level-inference-2" class="slide level2">
+<h2>User-level inference</h2>
+<div class="cell">
+<div class="sourceCode" id="cb11"><pre class="sourceCode numberSource r cell-code number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1"></a>results <span class="ot">&lt;-</span> <span class="fu">estimateIdeology</span>(<span class="st">"cbarrie"</span>, ids)</span>
+<span id="cb11-2"><a href="#cb11-2"></a><span class="fu">plot</span>(results)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 
-<img data-src="03_get_tweeters_files/figure-revealjs/unnamed-chunk-14-1.png" width="960" class="r-stretch"></section>
+<img data-src="03_get_tweeters_files/figure-revealjs/unnamed-chunk-20-1.png" width="960" class="r-stretch"></section>
 <section id="user-level-geolocation" class="slide level2">
 <h2>User-level geolocation</h2>
 <div class="cell">
-<div class="sourceCode" id="cb7"><pre class="sourceCode numberSource r cell-code number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a>userfwing <span class="sc">%&gt;%</span></span>
-<span id="cb7-2"><a href="#cb7-2"></a>  <span class="fu">group_by</span>(location) <span class="sc">%&gt;%</span></span>
-<span id="cb7-3"><a href="#cb7-3"></a>  <span class="fu">summarise</span>(<span class="at">count =</span> <span class="fu">n</span>()) <span class="sc">%&gt;%</span></span>
-<span id="cb7-4"><a href="#cb7-4"></a>  <span class="fu">top_n</span>(count)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb12"><pre class="sourceCode numberSource r cell-code number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1"></a>userfwing <span class="sc">%&gt;%</span></span>
+<span id="cb12-2"><a href="#cb12-2"></a>  <span class="fu">group_by</span>(location) <span class="sc">%&gt;%</span></span>
+<span id="cb12-3"><a href="#cb12-3"></a>  <span class="fu">summarise</span>(<span class="at">count =</span> <span class="fu">n</span>()) <span class="sc">%&gt;%</span></span>
+<span id="cb12-4"><a href="#cb12-4"></a>  <span class="fu">top_n</span>(count)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-stdout">
 <pre><code># A tibble: 12 × 2
    location            count
